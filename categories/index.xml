@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on 伏太中文技术博客</title>
+        <link>https://RayFUTAI.github.ioc/categories/</link>
+        <description>Recent content in Categories on 伏太中文技术博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Mon, 19 Jan 2026 12:38:56 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>实验</title>
+        <link>https://RayFUTAI.github.ioc/categories/%E5%AE%9E%E9%AA%8C/</link>
+        <pubDate>Mon, 19 Jan 2026 12:38:56 +0800</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/categories/%E5%AE%9E%E9%AA%8C/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>关于</title>
+        <link>https://RayFUTAI.github.ioc/categories/%E5%85%B3%E4%BA%8E/</link>
+        <pubDate>Sun, 18 Jan 2026 18:25:44 +0800</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/categories/%E5%85%B3%E4%BA%8E/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Syntax</title>
+        <link>https://RayFUTAI.github.ioc/categories/syntax/</link>
+        <pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/categories/syntax/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Themes</title>
+        <link>https://RayFUTAI.github.ioc/categories/themes/</link>
+        <pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/categories/themes/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Example Category</title>
+        <link>https://RayFUTAI.github.ioc/categories/example-category/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/categories/example-category/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

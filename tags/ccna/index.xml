@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>CCNA on 伏太中文技术博客</title>
+        <link>https://RayFUTAI.github.ioc/tags/ccna/</link>
+        <description>Recent content in CCNA on 伏太中文技术博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Mon, 19 Jan 2026 12:38:56 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/tags/ccna/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CCNA 实验：静态路由配置『我第一次看懂路由表』</title>
+        <link>https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/</link>
+        <pubDate>Mon, 19 Jan 2026 12:38:56 +0800</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/</guid>
+        <description>&lt;img src="https://images.unsplash.com/photo-1519638399535-1b036603ac77?q=80&amp;w=1631&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Featured image of post CCNA 实验：静态路由配置『我第一次看懂路由表』" /&gt;&lt;h1 id=&#34;静态路由器命令以及实战操作&#34;&gt;静态路由器命令以及实战操作
+&lt;/h1&gt;&lt;h2 id=&#34;实现不同网段互相通信静态路由&#34;&gt;实现不同网段互相通信『静态路由』
+&lt;/h2&gt;&lt;h2 id=&#34;实验拓扑图&#34;&gt;实验拓扑图
+&lt;/h2&gt;&lt;h3 id=&#34;使用设备2台pc--2台路由器&#34;&gt;使用设备：2台PC | 2台路由器
+&lt;/h3&gt;&lt;h3 id=&#34;使用线路2个直通线--1个双绞线&#34;&gt;使用线路：2个直通线 | 1个双绞线
+&lt;/h3&gt;&lt;h3 id=&#34;pc0网段1921681024&#34;&gt;PC0网段：192.168.1.0/24
+&lt;/h3&gt;&lt;h3 id=&#34;pc1网段1921682024&#34;&gt;PC1网段：192.168.2.0/24
+&lt;/h3&gt;&lt;h3 id=&#34;路由器网段1011030&#34;&gt;路由器网段：10.1.1.0/30
+&lt;/h3&gt;&lt;p&gt;结构拓扑图：
+&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/1.png&#34;
+	width=&#34;2880&#34;
+	height=&#34;1532&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/1_hu_f4089a478169289d.png 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/1_hu_91829d0873c1d0cc.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;结构拓扑图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;451px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;给pc1和pc2配上-ip地址--子网掩码--网关&#34;&gt;给PC1和PC2配上 ip地址 | 子网掩码 | 网关
+&lt;/h2&gt;&lt;h3 id=&#34;配置如图&#34;&gt;配置如图：
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/2.png&#34;
+	width=&#34;2858&#34;
+	height=&#34;1528&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/2_hu_58095f76c34ce676.png 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/2_hu_3a86ef1fcb6b54b0.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;187&#34;
+		data-flex-basis=&#34;448px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;路由器接口配置&#34;&gt;路由器接口配置
+&lt;/h2&gt;&lt;h3 id=&#34;配置如图-1&#34;&gt;配置如图：
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/3.png&#34;
+	width=&#34;2879&#34;
+	height=&#34;1523&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/3_hu_8e6e264a04e940d6.png 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/3_hu_581ea5ad4916f3df.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;配置静态路由&#34;&gt;配置静态路由
+&lt;/h2&gt;&lt;h3 id=&#34;命令&#34;&gt;命令
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ip route [目标网段]+[目标子网掩码]+[下一跳地址]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;配置如图-2&#34;&gt;配置如图：
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/4.png&#34;
+	width=&#34;2863&#34;
+	height=&#34;1453&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/4_hu_2f042059999e074c.png 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/4_hu_d0010eb86bd04e86.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;197&#34;
+		data-flex-basis=&#34;472px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;查看路由表&#34;&gt;查看路由表
+&lt;/h2&gt;&lt;h3 id=&#34;命令-1&#34;&gt;命令
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;do show ip route
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;配置如图-3&#34;&gt;配置如图：
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/6.png&#34;
+	width=&#34;2854&#34;
+	height=&#34;1510&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/6_hu_3eb5fe2b6836c3fd.png 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/6_hu_c090eb5e100773e6.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/5.png&#34;
+	width=&#34;2876&#34;
+	height=&#34;1523&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/5_hu_e6e57f2ed341a9a.png 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/5_hu_56032352a48e80f8.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;总揽&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;查看&#34;&gt;查看
+&lt;/h3&gt;&lt;h4 id=&#34;c表示直连路由目标网络直接连在本路由接口上&#34;&gt;C表示直连路由：目标网络直接连在本路由接口上
+&lt;/h4&gt;&lt;h4 id=&#34;s表示静态路由如果目标的地址不属于直连网络路由器就把数据包交给下一跳去处理&#34;&gt;S表示静态路由：如果目标的地址不属于直连网络，路由器就把数据包交给下一跳去处理
+&lt;/h4&gt;&lt;h4 id=&#34;总结c是就在我这----s是交给他&#34;&gt;总结：C是『就在我这』    S是『交给他』
+&lt;/h4&gt;&lt;h2 id=&#34;最后一步-测试网络连通性&#34;&gt;最后一步： 测试网络连通性
+&lt;/h2&gt;&lt;h3 id=&#34;测试如图&#34;&gt;测试如图：
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/7.png&#34;
+	width=&#34;2868&#34;
+	height=&#34;1522&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/7_hu_d7e36e4a79913ccc.png 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/7_hu_a76e2088597ce0d8.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;测试&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;452px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;实验结束&#34;&gt;实验结束
+&lt;/h1&gt;&lt;h2 id=&#34;命令总揽&#34;&gt;命令总揽：
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;enable #开启特权模式
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;configure  terminal #全局配置模式
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;interface G0/0『接口』 #接口配置模式
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ip address 『ip+子网掩码』 #配置路由器ip
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;no shutdown 打开接口
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ip route [目标网段]+[目标子网掩码]+[下一跳地址] #配置静态路由
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;show ip route #特权模式下查看路由表
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;do show ip route #非特权模式下查看路由表
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ping + 目标ip #测试网络连通性 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;配置总揽&#34;&gt;配置总揽：
+&lt;/h2&gt;&lt;h3 id=&#34;主机&#34;&gt;主机
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;IP: PC0: 192.168.1.1 |  PC1: 192.168.2.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;子网掩码： PC0 :255.255.255.0 | PC2 :255.255.255.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;网关：PC0 :192.168.1.254 | PC2 :192.168.2.254
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;路由器r0&#34;&gt;路由器R0
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;R0: int G0/0 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;IP: 192.168.1.254
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;子网掩码：255.255.255.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;R0: int G0/1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;IP: 10.1.1.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;子网掩码：255.255.255.252
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;路由器r1&#34;&gt;路由器R1
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;R1: int G0/0 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;IP: 192.168.2.254
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;子网掩码：255.255.255.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;R0: int G0/1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;IP: 10.1.1.2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;子网掩码：255.255.255.252
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
