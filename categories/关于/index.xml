@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>关于 on 伏太中文技术博客</title><link>https://demo.stack.jimmycai.com/categories/%E5%85%B3%E4%BA%8E/</link><description>Recent content in 关于 on 伏太中文技术博客</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Jan 2026 18:25:44 +0800</lastBuildDate><atom:link href="https://demo.stack.jimmycai.com/categories/%E5%85%B3%E4%BA%8E/index.xml" rel="self" type="application/rss+xml"/><item><title>18岁的第一站</title><link>https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/</link><pubDate>Sun, 18 Jan 2026 18:25:44 +0800</pubDate><guid>https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/</guid><description>&lt;img src="https://plus.unsplash.com/premium_photo-1675148247638-fb5c8db249a2?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8JUU1JThBJUE4JUU2JUJDJUFCfGVufDB8fDB8fHww" alt="Featured image of post 18岁的第一站" /&gt;&lt;h2 id="前言"&gt;前言：
+&lt;/h2&gt;&lt;p&gt;这是我的第一篇博客也是我18岁的第一篇，简单说一下我为什么要写这个博客：&amp;ldquo;为了记录我的CCNA学习记录，并为我的职业生涯攒下&amp;rsquo;技术复利&amp;rsquo;和&amp;rsquo;记录成长&amp;rsquo;&amp;ldquo;从0-1很难~但是这是我的开始！&lt;/p&gt;
+&lt;h2 id="问题"&gt;问题：
+&lt;/h2&gt;&lt;p&gt;今天在运行虚拟机的过程中遇到了二个问题分别是&amp;quot;黑屏问题&amp;quot;和&amp;quot;网络掉线问题&amp;rdquo;&lt;/p&gt;
+&lt;h2 id="解决1虚拟机打不开"&gt;解决：1.虚拟机打不开
+&lt;/h2&gt;&lt;p&gt;我遇到的问题的锁定保护因上次异常关机虚拟内部认为还没关机-解决方案:
+1.查看存放虚拟的文件夹
+&lt;img src="https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-1.png"
+width="1728"
+height="972"
+srcset="https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-1_hu_4da4191cb682cc3f.png 480w, https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-1_hu_7b42acd5f72ad63b.png 1024w"
+loading="lazy"
+alt="1-1"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+&gt;&lt;/p&gt;
+&lt;p&gt;2.后缀为.lck文件夹全部删除
+&lt;img src="https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-2.png"
+width="1780"
+height="1400"
+srcset="https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-2_hu_98dc63bf581f5c66.png 480w, https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-2_hu_2c291f0ebce2bac7.png 1024w"
+loading="lazy"
+alt="1-2"
+class="gallery-image"
+data-flex-grow="127"
+data-flex-basis="305px"
+&gt;&lt;/p&gt;
+&lt;p&gt;3.返回界面重新启动&lt;/p&gt;
+&lt;h2 id="解决-2网络掉线"&gt;解决: 2.网络掉线
+&lt;/h2&gt;&lt;p&gt;这个问题是和第一个问题同时发生的&amp;quot;线缆已拔出&amp;quot;虚拟网卡掉线了-解决方案：
+1.在windows设置搜索&amp;quot;服务
+&lt;img src="https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-3.png"
+width="1728"
+height="972"
+srcset="https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-3_hu_19ffbfd2e2df6172.png 480w, https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-3_hu_266efd88e57d6a12.png 1024w"
+loading="lazy"
+alt="1-3"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+&gt;&lt;/p&gt;
+&lt;p&gt;2.往下拉&amp;quot;找到&amp;quot;VMware NAT Service和VMnetDHC更改设置&amp;quot;启动&amp;rdquo;
+&lt;img src="https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-5.png"
+width="1728"
+height="972"
+srcset="https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-5_hu_4bc6f79d25812cd4.png 480w, https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-5_hu_61a5e0d902e99327.png 1024w"
+loading="lazy"
+alt="1-5"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-4.png"
+width="1728"
+height="972"
+srcset="https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-4_hu_bce25e5dff03a966.png 480w, https://demo.stack.jimmycai.com/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-4_hu_10778ecfba681adb.png 1024w"
+loading="lazy"
+alt="1-4"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+&gt;&lt;/p&gt;
+&lt;p&gt;3.返回虚拟机即可&lt;/p&gt;
+&lt;h3 id="这是我的第一篇文章不知道写什么但是我还是随便写出来了以后将在这里分享我的ccna学习内容和网络实验欢迎大家见证我的成长"&gt;『这是我的第一篇文章：不知道写什么但是我还是随便写出来了以后将在这里分享我的CCNA学习内容和网络实验！欢迎大家见证我的成长』
+&lt;/h3&gt;</description></item></channel></rss>
