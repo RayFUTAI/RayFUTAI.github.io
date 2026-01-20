@@ -6,7 +6,37 @@
         <description>Recent content in Posts on 伏太中文技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 19 Jan 2026 12:38:56 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 20 Jan 2026 16:28:05 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CCNA 实验：静态路由配置 &#43;浮动静态路由『故障模拟』</title>
+        <link>https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/</link>
+        <pubDate>Tue, 20 Jan 2026 16:28:05 +0800</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/</guid>
+        <description>&lt;img src="https://plus.unsplash.com/premium_photo-1722944969391-1d21a2d404ea?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFwYW58ZW58MHx8NHx8fDA%3D" alt="Featured image of post CCNA 实验：静态路由配置 &#43;浮动静态路由『故障模拟』" /&gt;&lt;h1 id=&#34;静态路由配置-浮动静态路由模拟故障&#34;&gt;静态路由配置 +浮动静态路由+模拟故障
+&lt;/h1&gt;&lt;h2 id=&#34;实现不同网段互相通信以及主备链路如何工作ad&#34;&gt;实现不同网段互相通信以及主备链路如何工作『AD』
+&lt;/h2&gt;&lt;h2 id=&#34;实验拓扑图&#34;&gt;实验拓扑图
+&lt;/h2&gt;&lt;h3 id=&#34;使用设备2台pc--4台路由器&#34;&gt;使用设备：2台PC | 4台路由器
+&lt;/h3&gt;&lt;h3 id=&#34;使用线路2个直通线--1个双绞线&#34;&gt;使用线路：2个直通线 | 1个双绞线
+&lt;/h3&gt;&lt;h3 id=&#34;pc0网段1921681024&#34;&gt;PC0网段：192.168.1.0/24
+&lt;/h3&gt;&lt;h3 id=&#34;pc1网段1921682024&#34;&gt;PC1网段：192.168.2.0/24
+&lt;/h3&gt;&lt;h3 id=&#34;路由器网段&#34;&gt;路由器网段
+&lt;/h3&gt;&lt;h3 id=&#34;r0-r110110&#34;&gt;R0-R1:10.1.1.0
+&lt;/h3&gt;&lt;h3 id=&#34;r1-r210112&#34;&gt;R1-R2:10.1.1.2
+&lt;/h3&gt;&lt;h3 id=&#34;r1-r310113&#34;&gt;R1-R3:10.1.1.3
+&lt;/h3&gt;&lt;p&gt;结构拓扑图：
+&lt;img src=&#34;https://RayFUTAI.github.ioc/1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;结构拓扑图&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>CCNA 实验：静态路由配置『我第一次看懂路由表』</title>
         <link>https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/</link>
         <pubDate>Mon, 19 Jan 2026 12:38:56 +0800</pubDate>
