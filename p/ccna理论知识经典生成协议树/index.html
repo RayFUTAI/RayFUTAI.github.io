@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="STP『经典生成协议树』 为什么需要STP?『环路的危害』 当交换机之间存冗余链路时，如果没有STP：会产生以下灾难 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络 MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动 核心内容根桥『Root Bridge』 STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』 选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜 BRidge ID 结构『8字节』 1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数 2.Extended System ID『12bits』:即VLAN ID 3.MAC Address『48bits』:当优先级相同时比MAC地址大小 STP 端口角色与状态 根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』 状态：Forwarding 指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口 状态：Forwarding 注： 桥更上的所有物理端口都是 DP 非指定端口『Non-Designated Port』被逻辑阻塞的端口 状态：Blocking 路径开销『STP Cost』 STP根据链路带宽计算Cost:带宽越高Cost越小『越优秀』 链路速度 802.1D标准Cost 10Mbps 100 100Mbps 19 1Gbps 4 10Gbps 2 ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="STP『经典生成协议树』 1.为什么需要STP?『环路的危害』 当交换机之间存冗余链路时，如果没有STP：会产生以下灾难 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络 MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动 2.核心内容根桥『Root Bridge』 STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』 选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜 BRidge ID 结构『8字节』 BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数 Extended System ID『12bits』:即VLAN ID MAC Address『48bits』:当优先级相同时比MAC地址大小 3.STP 端口角色与状态 根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』 状态：Forwarding『转发』\n">
 <title>CCNA理论知识『经典生成协议树』</title>
 
 <link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%BB%8F%E5%85%B8%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/'>
 
 <link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA理论知识『经典生成协议树』">
-<meta property='og:description' content="STP『经典生成协议树』 为什么需要STP?『环路的危害』 当交换机之间存冗余链路时，如果没有STP：会产生以下灾难 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络 MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动 核心内容根桥『Root Bridge』 STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』 选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜 BRidge ID 结构『8字节』 1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数 2.Extended System ID『12bits』:即VLAN ID 3.MAC Address『48bits』:当优先级相同时比MAC地址大小 STP 端口角色与状态 根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』 状态：Forwarding 指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口 状态：Forwarding 注： 桥更上的所有物理端口都是 DP 非指定端口『Non-Designated Port』被逻辑阻塞的端口 状态：Blocking 路径开销『STP Cost』 STP根据链路带宽计算Cost:带宽越高Cost越小『越优秀』 链路速度 802.1D标准Cost 10Mbps 100 100Mbps 19 1Gbps 4 10Gbps 2 ">
+<meta property='og:description' content="STP『经典生成协议树』 1.为什么需要STP?『环路的危害』 当交换机之间存冗余链路时，如果没有STP：会产生以下灾难 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络 MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动 2.核心内容根桥『Root Bridge』 STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』 选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜 BRidge ID 结构『8字节』 BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数 Extended System ID『12bits』:即VLAN ID MAC Address『48bits』:当优先级相同时比MAC地址大小 3.STP 端口角色与状态 根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』 状态：Forwarding『转发』\n">
 <meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%BB%8F%E5%85%B8%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='理论' /><meta property='article:published_time' content='2026-01-21T15:51:37&#43;08:00'/><meta property='article:modified_time' content='2026-01-21T15:51:37&#43;08:00'/><meta property='og:image' content='https://plus.unsplash.com/premium_photo-1746101508295-1757c4df46f5?q=80&amp;w=1471&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
 <meta name="twitter:title" content="CCNA理论知识『经典生成协议树』">
-<meta name="twitter:description" content="STP『经典生成协议树』 为什么需要STP?『环路的危害』 当交换机之间存冗余链路时，如果没有STP：会产生以下灾难 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络 MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动 核心内容根桥『Root Bridge』 STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』 选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜 BRidge ID 结构『8字节』 1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数 2.Extended System ID『12bits』:即VLAN ID 3.MAC Address『48bits』:当优先级相同时比MAC地址大小 STP 端口角色与状态 根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』 状态：Forwarding 指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口 状态：Forwarding 注： 桥更上的所有物理端口都是 DP 非指定端口『Non-Designated Port』被逻辑阻塞的端口 状态：Blocking 路径开销『STP Cost』 STP根据链路带宽计算Cost:带宽越高Cost越小『越优秀』 链路速度 802.1D标准Cost 10Mbps 100 100Mbps 19 1Gbps 4 10Gbps 2 "><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="STP『经典生成协议树』 1.为什么需要STP?『环路的危害』 当交换机之间存冗余链路时，如果没有STP：会产生以下灾难 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络 MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动 2.核心内容根桥『Root Bridge』 STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』 选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜 BRidge ID 结构『8字节』 BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数 Extended System ID『12bits』:即VLAN ID MAC Address『48bits』:当优先级相同时比MAC地址大小 3.STP 端口角色与状态 根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』 状态：Forwarding『转发』\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://plus.unsplash.com/premium_photo-1746101508295-1757c4df46f5?q=80&amp;w=1471&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
     <link rel="shortcut icon" href="/favicon.png" />
 
@@ -301,49 +301,29 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#当交换机之间存冗余链路时如果没有stp会产生以下灾难">当交换机之间存冗余链路时，如果没有STP：会产生以下灾难</a>
-      <ol>
-        <li><a href="#广播风暴broadcast-storm广播帧在环路中无限循环直到淹没网络">广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络</a></li>
-        <li><a href="#mac地址漂移mac-address-flapping交换机不断从不同接口学习同一个mac地址导致mac表剧烈躁动">MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动</a></li>
-      </ol>
-    </li>
+    <li><a href="#当交换机之间存冗余链路时如果没有stp会产生以下灾难">当交换机之间存冗余链路时，如果没有STP：会产生以下灾难</a></li>
   </ol>
 
   <ol>
     <li><a href="#选举规则拥有最低桥-id-lowst-bridge-id的交换机获胜">选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜</a>
       <ol>
-        <li><a href="#bridge-id-结构8字节">BRidge ID 结构『8字节』</a>
-          <ol>
-            <li><a href="#1-bridge-priority4bits默认值32768-必须是4086的倍数">1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数</a></li>
-            <li><a href="#2extended-system-id12bits即vlan-id">2.Extended System ID『12bits』:即VLAN ID</a></li>
-            <li><a href="#3mac-address48bits当优先级相同时比mac地址大小">3.MAC Address『48bits』:当优先级相同时比MAC地址大小</a></li>
-          </ol>
-        </li>
+        <li><a href="#bridge-id-结构8字节">BRidge ID 结构『8字节』</a></li>
       </ol>
     </li>
   </ol>
 
   <ol>
-    <li><a href="#根端口root-portrp非根桥离根桥最近的端口每个非根桥只有一个">根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』</a>
-      <ol>
-        <li><a href="#状态forwarding">状态：Forwarding</a></li>
-      </ol>
-    </li>
-    <li><a href="#指定端口designated-portdp每个网段中离根桥最近的端口">指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口</a>
-      <ol>
-        <li><a href="#状态forwarding-1">状态：Forwarding</a></li>
-        <li><a href="#注-桥更上的所有物理端口都是-dp">注： 桥更上的所有物理端口都是 DP</a></li>
-      </ol>
-    </li>
-    <li><a href="#非指定端口non-designated-port被逻辑阻塞的端口">非指定端口『Non-Designated Port』被逻辑阻塞的端口</a>
-      <ol>
-        <li><a href="#状态blocking">状态：Blocking</a></li>
-      </ol>
-    </li>
+    <li><a href="#根端口root-portrp非根桥离根桥最近的端口每个非根桥只有一个">根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』</a></li>
+    <li><a href="#指定端口designated-portdp每个网段中离根桥最近的端口">指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口</a></li>
+    <li><a href="#非指定端口non-designated-port被逻辑阻塞的端口">非指定端口『Non-Designated Port』被逻辑阻塞的端口</a></li>
   </ol>
 
   <ol>
     <li><a href="#stp根据链路带宽计算cost带宽越高cost越小越优秀">STP根据链路带宽计算Cost:带宽越高Cost越小『越优秀』</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#当需要确定root-port-或者designated-port时按照以下顺序越小越好">当需要确定ROOT Port 或者Designated Port时按照以下顺序『越小越好』</a></li>
   </ol>
 </nav>
         </div>
@@ -432,26 +412,30 @@
     
     
     <h1 id="stp经典生成协议树">STP『经典生成协议树』
-</h1><h1 id="为什么需要stp环路的危害">为什么需要STP?『环路的危害』
+</h1><h1 id="1为什么需要stp环路的危害">1.为什么需要STP?『环路的危害』
 </h1><h2 id="当交换机之间存冗余链路时如果没有stp会产生以下灾难">当交换机之间存冗余链路时，如果没有STP：会产生以下灾难
-</h2><h3 id="广播风暴broadcast-storm广播帧在环路中无限循环直到淹没网络">广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络
-</h3><h3 id="mac地址漂移mac-address-flapping交换机不断从不同接口学习同一个mac地址导致mac表剧烈躁动">MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动
-</h3><h1 id="核心内容根桥root-bridge">核心内容根桥『Root Bridge』
+</h2><ol>
+<li>广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络</li>
+<li>MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动</li>
+</ol>
+<h1 id="2核心内容根桥root-bridge">2.核心内容根桥『Root Bridge』
 </h1><h1 id="stp网络中仅有一个根桥他是整个树状结构的根">STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』
 </h1><h2 id="选举规则拥有最低桥-id-lowst-bridge-id的交换机获胜">选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜
 </h2><h3 id="bridge-id-结构8字节">BRidge ID 结构『8字节』
-</h3><h4 id="1-bridge-priority4bits默认值32768-必须是4086的倍数">1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数
-</h4><h4 id="2extended-system-id12bits即vlan-id">2.Extended System ID『12bits』:即VLAN ID
-</h4><h4 id="3mac-address48bits当优先级相同时比mac地址大小">3.MAC Address『48bits』:当优先级相同时比MAC地址大小
-</h4><h1 id="stp-端口角色与状态">STP 端口角色与状态
+</h3><ol>
+<li>BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数</li>
+<li>Extended System ID『12bits』:即VLAN ID</li>
+<li>MAC Address『48bits』:当优先级相同时比MAC地址大小</li>
+</ol>
+<h1 id="3stp-端口角色与状态">3.STP 端口角色与状态
 </h1><h2 id="根端口root-portrp非根桥离根桥最近的端口每个非根桥只有一个">根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』
-</h2><h3 id="状态forwarding">状态：Forwarding
-</h3><h2 id="指定端口designated-portdp每个网段中离根桥最近的端口">指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口
-</h2><h3 id="状态forwarding-1">状态：Forwarding
-</h3><h3 id="注-桥更上的所有物理端口都是-dp">注： 桥更上的所有物理端口都是 DP
-</h3><h2 id="非指定端口non-designated-port被逻辑阻塞的端口">非指定端口『Non-Designated Port』被逻辑阻塞的端口
-</h2><h3 id="状态blocking">状态：Blocking
-</h3><h1 id="路径开销stp-cost">路径开销『STP Cost』
+</h2><p>状态：Forwarding『转发』</p>
+<h2 id="指定端口designated-portdp每个网段中离根桥最近的端口">指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口
+</h2><p>状态：Forwarding『转发』
+注： 桥更上的所有物理端口都是 DP</p>
+<h2 id="非指定端口non-designated-port被逻辑阻塞的端口">非指定端口『Non-Designated Port』被逻辑阻塞的端口
+</h2><p>状态：Blocking『堵塞』</p>
+<h1 id="4路径开销stp-cost">4.路径开销『STP Cost』
 </h1><h2 id="stp根据链路带宽计算cost带宽越高cost越小越优秀">STP根据链路带宽计算Cost:带宽越高Cost越小『越优秀』
 </h2><div class="table-wrapper"><table>
   <thead>
@@ -479,7 +463,15 @@
       </tr>
   </tbody>
 </table></div>
-
+<h1 id="5选举四步走逻辑">5.选举&quot;四步走&quot;逻辑
+</h1><h2 id="当需要确定root-port-或者designated-port时按照以下顺序越小越好">当需要确定ROOT Port 或者Designated Port时按照以下顺序『越小越好』
+</h2><ol>
+<li>Lowest Root Path Cost  :最低根路径开销</li>
+<li>Lowest Sending Brdg Id :最低发送方交换机ID</li>
+<li>Lowest Sending Port Id :最低发送方端口ID</li>
+</ol>
+<h1 id="总结stp生成树协议的核心目标是解决二层网络中的冗余链路导致的环路问题如广播风暴和-mac-地址漂移它通过选举出唯一的根桥基于最低桥-id并利用路径开销来确定各个交换机上离根桥最近的根端口和每个网段上的指定端口最终stp-会将冗余端口置于阻塞状态blocking从而逻辑上断开环路实现无环路拓扑">总结：STP（生成树协议）的核心目标是解决二层网络中的冗余链路导致的环路问题（如广播风暴和 MAC 地址漂移）它通过选举出唯一的根桥（基于最低桥 ID）并利用路径开销来确定各个交换机上离根桥最近的根端口和每个网段上的指定端口最终，STP 会将冗余端口置于阻塞状态（Blocking），从而逻辑上断开环路，实现无环路拓扑.
+</h1>
 </section>
 
 
