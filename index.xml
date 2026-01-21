@@ -61,13 +61,60 @@
 &lt;/h1&gt;</description>
         </item>
         <item>
-        <title>CCNA理论知识『生成协议树』</title>
-        <link>https://RayFUTAI.github.ioc/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/</link>
+        <title>CCNA理论知识『经典生成协议树』</title>
+        <link>https://RayFUTAI.github.ioc/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%BB%8F%E5%85%B8%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/</link>
         <pubDate>Wed, 21 Jan 2026 15:51:37 +0800</pubDate>
         
-        <guid>https://RayFUTAI.github.ioc/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/</guid>
-        <description>&lt;img src="https://plus.unsplash.com/premium_photo-1746101508295-1757c4df46f5?q=80&amp;w=1471&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Featured image of post CCNA理论知识『生成协议树』" /&gt;&lt;h1 id=&#34;stp生成协议树&#34;&gt;STP『生成协议树』
-&lt;/h1&gt;</description>
+        <guid>https://RayFUTAI.github.ioc/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%BB%8F%E5%85%B8%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/</guid>
+        <description>&lt;img src="https://plus.unsplash.com/premium_photo-1746101508295-1757c4df46f5?q=80&amp;w=1471&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Featured image of post CCNA理论知识『经典生成协议树』" /&gt;&lt;h1 id=&#34;stp经典生成协议树&#34;&gt;STP『经典生成协议树』
+&lt;/h1&gt;&lt;h1 id=&#34;为什么需要stp环路的危害&#34;&gt;为什么需要STP?『环路的危害』
+&lt;/h1&gt;&lt;h2 id=&#34;当交换机之间存冗余链路时如果没有stp会产生以下灾难&#34;&gt;当交换机之间存冗余链路时，如果没有STP：会产生以下灾难
+&lt;/h2&gt;&lt;h3 id=&#34;广播风暴broadcast-storm广播帧在环路中无限循环直到淹没网络&#34;&gt;广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络
+&lt;/h3&gt;&lt;h3 id=&#34;mac地址漂移mac-address-flapping交换机不断从不同接口学习同一个mac地址导致mac表剧烈躁动&#34;&gt;MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动
+&lt;/h3&gt;&lt;h1 id=&#34;核心内容根桥root-bridge&#34;&gt;核心内容根桥『Root Bridge』
+&lt;/h1&gt;&lt;h1 id=&#34;stp网络中仅有一个根桥他是整个树状结构的根&#34;&gt;STP网络中仅有一个根桥『他是整个树状结构的&amp;quot;根&amp;quot;』
+&lt;/h1&gt;&lt;h2 id=&#34;选举规则拥有最低桥-id-lowst-bridge-id的交换机获胜&#34;&gt;选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜
+&lt;/h2&gt;&lt;h3 id=&#34;bridge-id-结构8字节&#34;&gt;BRidge ID 结构『8字节』
+&lt;/h3&gt;&lt;h4 id=&#34;1-bridge-priority4bits默认值32768-必须是4086的倍数&#34;&gt;1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数
+&lt;/h4&gt;&lt;h4 id=&#34;2extended-system-id12bits即vlan-id&#34;&gt;2.Extended System ID『12bits』:即VLAN ID
+&lt;/h4&gt;&lt;h4 id=&#34;3mac-address48bits当优先级相同时比mac地址大小&#34;&gt;3.MAC Address『48bits』:当优先级相同时比MAC地址大小
+&lt;/h4&gt;&lt;h1 id=&#34;stp-端口角色与状态&#34;&gt;STP 端口角色与状态
+&lt;/h1&gt;&lt;h2 id=&#34;根端口root-portrp非根桥离根桥最近的端口每个非根桥只有一个&#34;&gt;根端口『Root-Port&amp;ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』
+&lt;/h2&gt;&lt;h3 id=&#34;状态forwarding&#34;&gt;状态：Forwarding
+&lt;/h3&gt;&lt;h2 id=&#34;指定端口designated-portdp每个网段中离根桥最近的端口&#34;&gt;指定端口『Designated Port&amp;ndash;DP』:每个网段中离根桥最近的端口
+&lt;/h2&gt;&lt;h3 id=&#34;状态forwarding-1&#34;&gt;状态：Forwarding
+&lt;/h3&gt;&lt;h3 id=&#34;注-桥更上的所有物理端口都是-dp&#34;&gt;注： 桥更上的所有物理端口都是 DP
+&lt;/h3&gt;&lt;h2 id=&#34;非指定端口non-designated-port被逻辑阻塞的端口&#34;&gt;非指定端口『Non-Designated Port』被逻辑阻塞的端口
+&lt;/h2&gt;&lt;h3 id=&#34;状态blocking&#34;&gt;状态：Blocking
+&lt;/h3&gt;&lt;h1 id=&#34;路径开销stp-cost&#34;&gt;路径开销『STP Cost』
+&lt;/h1&gt;&lt;h2 id=&#34;stp根据链路带宽计算cost带宽越高cost越小越优秀&#34;&gt;STP根据链路带宽计算Cost:带宽越高Cost越小『越优秀』
+&lt;/h2&gt;&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;链路速度&lt;/th&gt;
+          &lt;th&gt;802.1D标准Cost&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;10Mbps&lt;/td&gt;
+          &lt;td&gt;100&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;100Mbps&lt;/td&gt;
+          &lt;td&gt;19&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1Gbps&lt;/td&gt;
+          &lt;td&gt;4&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;10Gbps&lt;/td&gt;
+          &lt;td&gt;2&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
         </item>
         <item>
         <title>CCNA 实验：默认路由配置 &#43;浮动静态路由『故障模拟』</title>
