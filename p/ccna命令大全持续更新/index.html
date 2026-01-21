@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一.设备基础与通用命令 1.模式切换 1 2 3 enable #进入特权模式 configure terminal #进入全局配置模式 exit #退出当前模式 2.基础查看命令 1 2 3 4 show running-config #查看当前配置 show startup-config #查看启动配置 show version #退出当前模式 show ip interface brief #接口ip与状态速看 3.保存与清空配置 1 2 3 wite memory #保存配置 copy running-config startup-config #保存配置 reload #重启设备 二.接口配置『router| switch』通用 接口基本配置流程 ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="一.设备基础与通用命令 1.模式切换 1 2 3 4 enable #进入特权模式 configure terminal #进入全局配置模式 exit #退出当前模式 end #回到特权模式 2.基础查看命令 1 2 3 4 show running-config #查看当前配置 show startup-config #查看启动配置 show version #退出当前模式 show ip interface brief #接口ip与状态速看 3.保存与清空配置 1 2 3 wite memory #保存配置 copy running-config startup-config #保存配置 reload #重启设备 二.接口配置『router| switch』通用 1.接口基本配置流程 1 2 3 4 interface 『g0/0』 #配置接口 ip address 『192.168.1.1 255.255.255.0』 #配置ip no shutdown #开启接口 exit #退出当前模式 2.接口状态排错 1 2 show interface 『g0/0』 show ip interface 『g0/0』 三.交换机『switch』核心命令 1.VLAN 基础 1 2 3 4 vlan 『10』#创建VLAN name 『CCNA』#VLAN 名称 exit #退出当前模式 show vlan brief #查看VLAN列表 2.接口加入VLAN(Access) 1 2 3 interface f0/1 switchport mode access switchport access vlan 10 ">
 <title>CCNA命令大全『持续更新』</title>
 
 <link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/'>
 
 <link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA命令大全『持续更新』">
-<meta property='og:description' content="一.设备基础与通用命令 1.模式切换 1 2 3 enable #进入特权模式 configure terminal #进入全局配置模式 exit #退出当前模式 2.基础查看命令 1 2 3 4 show running-config #查看当前配置 show startup-config #查看启动配置 show version #退出当前模式 show ip interface brief #接口ip与状态速看 3.保存与清空配置 1 2 3 wite memory #保存配置 copy running-config startup-config #保存配置 reload #重启设备 二.接口配置『router| switch』通用 接口基本配置流程 ">
+<meta property='og:description' content="一.设备基础与通用命令 1.模式切换 1 2 3 4 enable #进入特权模式 configure terminal #进入全局配置模式 exit #退出当前模式 end #回到特权模式 2.基础查看命令 1 2 3 4 show running-config #查看当前配置 show startup-config #查看启动配置 show version #退出当前模式 show ip interface brief #接口ip与状态速看 3.保存与清空配置 1 2 3 wite memory #保存配置 copy running-config startup-config #保存配置 reload #重启设备 二.接口配置『router| switch』通用 1.接口基本配置流程 1 2 3 4 interface 『g0/0』 #配置接口 ip address 『192.168.1.1 255.255.255.0』 #配置ip no shutdown #开启接口 exit #退出当前模式 2.接口状态排错 1 2 show interface 『g0/0』 show ip interface 『g0/0』 三.交换机『switch』核心命令 1.VLAN 基础 1 2 3 4 vlan 『10』#创建VLAN name 『CCNA』#VLAN 名称 exit #退出当前模式 show vlan brief #查看VLAN列表 2.接口加入VLAN(Access) 1 2 3 interface f0/1 switchport mode access switchport access vlan 10 ">
 <meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='命令' /><meta property='article:published_time' content='2026-01-20T21:03:08&#43;08:00'/><meta property='article:modified_time' content='2026-01-20T21:03:08&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTZ8fGFuaW1lfGVufDB8fDR8fHww' />
 <meta name="twitter:title" content="CCNA命令大全『持续更新』">
-<meta name="twitter:description" content="一.设备基础与通用命令 1.模式切换 1 2 3 enable #进入特权模式 configure terminal #进入全局配置模式 exit #退出当前模式 2.基础查看命令 1 2 3 4 show running-config #查看当前配置 show startup-config #查看启动配置 show version #退出当前模式 show ip interface brief #接口ip与状态速看 3.保存与清空配置 1 2 3 wite memory #保存配置 copy running-config startup-config #保存配置 reload #重启设备 二.接口配置『router| switch』通用 接口基本配置流程 "><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="一.设备基础与通用命令 1.模式切换 1 2 3 4 enable #进入特权模式 configure terminal #进入全局配置模式 exit #退出当前模式 end #回到特权模式 2.基础查看命令 1 2 3 4 show running-config #查看当前配置 show startup-config #查看启动配置 show version #退出当前模式 show ip interface brief #接口ip与状态速看 3.保存与清空配置 1 2 3 wite memory #保存配置 copy running-config startup-config #保存配置 reload #重启设备 二.接口配置『router| switch』通用 1.接口基本配置流程 1 2 3 4 interface 『g0/0』 #配置接口 ip address 『192.168.1.1 255.255.255.0』 #配置ip no shutdown #开启接口 exit #退出当前模式 2.接口状态排错 1 2 show interface 『g0/0』 show ip interface 『g0/0』 三.交换机『switch』核心命令 1.VLAN 基础 1 2 3 4 vlan 『10』#创建VLAN name 『CCNA』#VLAN 名称 exit #退出当前模式 show vlan brief #查看VLAN列表 2.接口加入VLAN(Access) 1 2 3 interface f0/1 switchport mode access switchport access vlan 10 "><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTZ8fGFuaW1lfGVufDB8fDR8fHww' />
     <link rel="shortcut icon" href="/favicon.png" />
 
@@ -305,6 +305,16 @@
     <li><a href="#2基础查看命令">2.基础查看命令</a></li>
     <li><a href="#3保存与清空配置">3.保存与清空配置</a></li>
   </ol>
+
+  <ol>
+    <li><a href="#1接口基本配置流程">1.接口基本配置流程</a></li>
+    <li><a href="#2接口状态排错">2.接口状态排错</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#1vlan-基础">1.VLAN 基础</a></li>
+    <li><a href="#2接口加入vlanaccess">2.接口加入VLAN(Access)</a></li>
+  </ol>
 </nav>
         </div>
     </section>
@@ -398,11 +408,13 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">enable             #进入特权模式
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">enable #进入特权模式
 </span></span><span class="line"><span class="cl">configure terminal #进入全局配置模式
-</span></span><span class="line"><span class="cl">exit               #退出当前模式
+</span></span><span class="line"><span class="cl">exit #退出当前模式
+</span></span><span class="line"><span class="cl">end #回到特权模式
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="2基础查看命令">2.基础查看命令
@@ -414,9 +426,9 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">show running-config     #查看当前配置
-</span></span><span class="line"><span class="cl">show startup-config     #查看启动配置
-</span></span><span class="line"><span class="cl">show version            #退出当前模式
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">show running-config #查看当前配置
+</span></span><span class="line"><span class="cl">show startup-config #查看启动配置
+</span></span><span class="line"><span class="cl">show version #退出当前模式
 </span></span><span class="line"><span class="cl">show ip interface brief #接口ip与状态速看
 </span></span></code></pre></td></tr></table>
 </div>
@@ -428,14 +440,68 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">wite</span> <span class="n">memory</span>                        <span class="c1">#保存配置</span>
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">wite</span> <span class="n">memory</span> <span class="c1">#保存配置</span>
 </span></span><span class="line"><span class="cl"><span class="n">copy</span> <span class="n">running</span><span class="o">-</span><span class="n">config</span> <span class="n">startup</span><span class="o">-</span><span class="n">config</span> <span class="c1">#保存配置</span>
-</span></span><span class="line"><span class="cl"><span class="n">reload</span>                             <span class="c1">#重启设备</span>
+</span></span><span class="line"><span class="cl"><span class="n">reload</span> <span class="c1">#重启设备</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="二接口配置router-switch通用">二.接口配置『router| switch』通用
-</h1><h1 id="接口基本配置流程">接口基本配置流程
-</h1>
+</h1><h2 id="1接口基本配置流程">1.接口基本配置流程
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">interface 『g0/0』 #配置接口
+</span></span><span class="line"><span class="cl">ip address 『192.168.1.1 255.255.255.0』 #配置ip
+</span></span><span class="line"><span class="cl">no shutdown #开启接口
+</span></span><span class="line"><span class="cl">exit #退出当前模式
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="2接口状态排错">2.接口状态排错
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">show interface 『g0/0』
+</span></span><span class="line"><span class="cl">show ip interface 『g0/0』 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="三交换机switch核心命令">三.交换机『switch』核心命令
+</h1><h2 id="1vlan-基础">1.VLAN 基础
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vlan 『10』#创建VLAN
+</span></span><span class="line"><span class="cl">name 『CCNA』#VLAN 名称
+</span></span><span class="line"><span class="cl">exit #退出当前模式
+</span></span><span class="line"><span class="cl">show vlan brief #查看VLAN列表
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="2接口加入vlanaccess">2.接口加入VLAN(Access)
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">interface f0/1
+</span></span><span class="line"><span class="cl">switchport mode access 
+</span></span><span class="line"><span class="cl">switchport access vlan 10
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
