@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="静态路由配置 +浮动静态路由+模拟故障 实现不同网段互相通信以及主备链路如何工作『AD』 实验拓扑图 使用设备：2台PC | 4台路由器 使用线路：2个直通线 | 3个双绞线 PC0网段：192.168.1.0/24 PC1网段：192.168.2.0/24 路由器网段 R0-R1:10.1.1.0 R1-R2:10.1.1.2 R1-R3:10.1.1.3 结构拓扑图： 给PC1和PC2配上 ip地址 | 子网掩码 | 网关 配置如图： 路由器接口配置 R0-R1配置如图： ">
-<title>CCNA 实验：默认路由配置 &#43;浮动静态路由『故障模拟』</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： 在下路由划分子接口 配置命令『缩写』 1 2 3 4 5 int G0/0 no sh #开启主接口 int G0/0.10 #创建子接口 ip address #配置ip no sh 开启 配置图: ">
+<title>CCNA 实验：单臂路由</title>
 
-<link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/'>
+<link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/'>
 
-<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA 实验：默认路由配置 +浮动静态路由『故障模拟』">
-<meta property='og:description' content="静态路由配置 +浮动静态路由+模拟故障 实现不同网段互相通信以及主备链路如何工作『AD』 实验拓扑图 使用设备：2台PC | 4台路由器 使用线路：2个直通线 | 3个双绞线 PC0网段：192.168.1.0/24 PC1网段：192.168.2.0/24 路由器网段 R0-R1:10.1.1.0 R1-R2:10.1.1.2 R1-R3:10.1.1.3 结构拓扑图： 给PC1和PC2配上 ip地址 | 子网掩码 | 网关 配置如图： 路由器接口配置 R0-R1配置如图： ">
-<meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/'>
+<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA 实验：单臂路由">
+<meta property='og:description' content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： 在下路由划分子接口 配置命令『缩写』 1 2 3 4 5 int G0/0 no sh #开启主接口 int G0/0.10 #创建子接口 ip address #配置ip no sh 开启 配置图: ">
+<meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='路由' /><meta property='article:published_time' content='2026-01-20T16:28:05&#43;08:00'/><meta property='article:modified_time' content='2026-01-20T16:28:05&#43;08:00'/><meta property='og:image' content='https://plus.unsplash.com/premium_photo-1722944969391-1d21a2d404ea?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFwYW58ZW58MHx8NHx8fDA%3D' />
-<meta name="twitter:title" content="CCNA 实验：默认路由配置 +浮动静态路由『故障模拟』">
-<meta name="twitter:description" content="静态路由配置 +浮动静态路由+模拟故障 实现不同网段互相通信以及主备链路如何工作『AD』 实验拓扑图 使用设备：2台PC | 4台路由器 使用线路：2个直通线 | 3个双绞线 PC0网段：192.168.1.0/24 PC1网段：192.168.2.0/24 路由器网段 R0-R1:10.1.1.0 R1-R2:10.1.1.2 R1-R3:10.1.1.3 结构拓扑图： 给PC1和PC2配上 ip地址 | 子网掩码 | 网关 配置如图： 路由器接口配置 R0-R1配置如图： "><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://plus.unsplash.com/premium_photo-1722944969391-1d21a2d404ea?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFwYW58ZW58MHx8NHx8fDA%3D' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='路由' /><meta property='article:published_time' content='2026-01-23T21:56:50&#43;08:00'/><meta property='article:modified_time' content='2026-01-23T21:56:50&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+<meta name="twitter:title" content="CCNA 实验：单臂路由">
+<meta name="twitter:description" content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： 在下路由划分子接口 配置命令『缩写』 1 2 3 4 5 int G0/0 no sh #开启主接口 int G0/0.10 #创建子接口 ip address #配置ip no sh 开启 配置图: "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -301,66 +301,35 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#实现不同网段互相通信以及主备链路如何工作ad">实现不同网段互相通信以及主备链路如何工作『AD』</a></li>
     <li><a href="#实验拓扑图">实验拓扑图</a>
       <ol>
-        <li><a href="#使用设备2台pc--4台路由器">使用设备：2台PC | 4台路由器</a></li>
-        <li><a href="#使用线路2个直通线--3个双绞线">使用线路：2个直通线 | 3个双绞线</a></li>
-        <li><a href="#pc0网段1921681024">PC0网段：192.168.1.0/24</a></li>
-        <li><a href="#pc1网段1921682024">PC1网段：192.168.2.0/24</a></li>
-        <li><a href="#路由器网段">路由器网段</a></li>
-        <li><a href="#r0-r110110">R0-R1:10.1.1.0</a></li>
-        <li><a href="#r1-r210112">R1-R2:10.1.1.2</a></li>
-        <li><a href="#r1-r310113">R1-R3:10.1.1.3</a></li>
+        <li><a href="#使用设备2台pc--1台路由器--1台交换机">使用设备：2台PC | 1台路由器 | 1台交换机</a></li>
+        <li><a href="#使用线路4个直通线">使用线路：4个直通线</a></li>
+        <li><a href="#pc0网段19216810024">PC0网段：192.168.10.0/24</a></li>
+        <li><a href="#pc1网段19216820024">PC1网段：192.168.20.0/24</a></li>
       </ol>
     </li>
-    <li><a href="#给pc1和pc2配上-ip地址--子网掩码--网关">给PC1和PC2配上 ip地址 | 子网掩码 | 网关</a>
+    <li><a href="#给pc0和pc1配上-ip地址--子网掩码--网关">给PC0和PC1配上 ip地址 | 子网掩码 | 网关</a>
       <ol>
-        <li><a href="#配置如图">配置如图：</a></li>
+        <li><a href="#pc1">PC1:</a></li>
+        <li><a href="#pc2">PC2:</a></li>
       </ol>
     </li>
-    <li><a href="#路由器接口配置">路由器接口配置</a>
+    <li><a href="#在交换机下划分vlan">在交换机下划分vlan</a>
       <ol>
-        <li><a href="#r0-r1配置如图">R0-R1配置如图：</a></li>
-        <li><a href="#r2-r3配置如图">R2-R3配置如图：</a></li>
+        <li><a href="#vlan-10-pc0--vlan-20-pc1">vlan 10 PC0 | vlan 20 PC1</a></li>
+        <li><a href="#配置如下">配置如下：</a></li>
       </ol>
     </li>
-    <li><a href="#如图">如图：</a></li>
-    <li><a href="#配置默认路由以及浮动静态路由">配置默认路由以及浮动静态路由</a>
+    <li><a href="#在下路由划分子接口">在下路由划分子接口</a>
       <ol>
-        <li><a href="#在r0上配置1条默认路由">在R0上配置1条默认路由</a>
-          <ol>
-            <li><a href="#命令结构">命令结构</a></li>
-          </ol>
-        </li>
-        <li><a href="#在r1上配置2条静态路由回程1条路由">在R1上配置2条静态路由+回程1条路由</a>
-          <ol>
-            <li><a href="#命令结构-1">命令结构</a></li>
-          </ol>
-        </li>
-        <li><a href="#配置如图-1">配置如图：</a></li>
+        <li><a href="#配置命令缩写">配置命令『缩写』</a></li>
       </ol>
     </li>
-    <li><a href="#测试网络连通性">测试网络连通性</a>
-      <ol>
-        <li><a href="#pc0-ping-pc1">PC0 ping PC1</a></li>
-      </ol>
-    </li>
-    <li><a href="#模拟故障">模拟故障</a>
-      <ol>
-        <li><a href="#断开主链路r1-r2">断开主链路R1-R2</a></li>
-        <li><a href="#自动启动备用链路">自动启动备用链路</a></li>
-      </ol>
-    </li>
-    <li><a href="#实验结束">实验结束</a></li>
-  </ol>
-
-  <ol>
-    <li><a href="#主链路断开-通信自动切换--ad值小低越优先">『主链路断开 通信自动切换』  『AD值小低越优先』</a>
-      <ol>
-        <li><a href="#直连路由-ad0-默认路由-ad1-静态路由-ad10">直连路由 AD=0 默认路由 AD=1 静态路由 AD=10</a></li>
-      </ol>
-    </li>
+    <li><a href="#配置图">配置图:</a></li>
+    <li><a href="#给交换机开启tunk通信">给交换机开启tunk通信</a></li>
+    <li><a href="#配置图-1">配置图:</a></li>
+    <li><a href="#测试通信连通行">测试通信连通行</a></li>
   </ol>
 </nav>
         </div>
@@ -375,9 +344,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/">
+            <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/">
                 
-                    <img src="https://plus.unsplash.com/premium_photo-1722944969391-1d21a2d404ea?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFwYW58ZW58MHx8NHx8fDA%3D" loading="lazy" alt="Featured image of post CCNA 实验：默认路由配置 &#43;浮动静态路由『故障模拟』" />
+                    <img src="https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" alt="Featured image of post CCNA 实验：单臂路由" />
                 
             </a>
         </div>
@@ -396,7 +365,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/">CCNA 实验：默认路由配置 &#43;浮动静态路由『故障模拟』</a>
+            <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/">CCNA 实验：单臂路由</a>
         </h2>
     
         
@@ -418,7 +387,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published" datetime='2026-01-20T16:28:05&#43;08:00'>Jan 20, 2026</time>
+                <time class="article-time--published" datetime='2026-01-23T21:56:50&#43;08:00'>Jan 23, 2026</time>
             </div>
         
 
@@ -448,72 +417,15 @@
     <section class="article-content">
     
     
-    <h1 id="静态路由配置-浮动静态路由模拟故障">静态路由配置 +浮动静态路由+模拟故障
-</h1><h2 id="实现不同网段互相通信以及主备链路如何工作ad">实现不同网段互相通信以及主备链路如何工作『AD』
-</h2><h2 id="实验拓扑图">实验拓扑图
-</h2><h3 id="使用设备2台pc--4台路由器">使用设备：2台PC | 4台路由器
-</h3><h3 id="使用线路2个直通线--3个双绞线">使用线路：2个直通线 | 3个双绞线
-</h3><h3 id="pc0网段1921681024">PC0网段：192.168.1.0/24
-</h3><h3 id="pc1网段1921682024">PC1网段：192.168.2.0/24
-</h3><h3 id="路由器网段">路由器网段
-</h3><h3 id="r0-r110110">R0-R1:10.1.1.0
-</h3><h3 id="r1-r210112">R1-R2:10.1.1.2
-</h3><h3 id="r1-r310113">R1-R3:10.1.1.3
-</h3><p>结构拓扑图：
-<img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/1.png"
+    <h1 id="实验目地解决物理接口不足问题实现不同vlan之间跨网段通信">实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信
+</h1><h2 id="实验拓扑图">实验拓扑图
+</h2><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/1.jpg"
 	width="2879"
-	height="1526"
-	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/1_hu_714a8a807e93e9a0.png 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/1_hu_659fbdeee8ccbd16.png 1024w"
+	height="1521"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/1_hu_89b0e5952e97fb2f.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/1_hu_8083911e13e5f948.jpg 1024w"
 	loading="lazy"
 	
-		alt="结构拓扑图"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="188"
-		data-flex-basis="452px"
-	
-></p>
-<h2 id="给pc1和pc2配上-ip地址--子网掩码--网关">给PC1和PC2配上 ip地址 | 子网掩码 | 网关
-</h2><h3 id="配置如图">配置如图：
-</h3><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/9.png"
-	width="2879"
-	height="1515"
-	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/9_hu_ec972de4cc88f401.png 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/9_hu_34af7e5b78dc2814.png 1024w"
-	loading="lazy"
-	
-		alt="配置"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="190"
-		data-flex-basis="456px"
-	
-></p>
-<h2 id="路由器接口配置">路由器接口配置
-</h2><h3 id="r0-r1配置如图">R0-R1配置如图：
-</h3><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/2.png"
-	width="2879"
-	height="1522"
-	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/2_hu_c1c3c4a40387b439.png 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/2_hu_be1904f8312b92ae.png 1024w"
-	loading="lazy"
-	
-		alt="配置"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="189"
-		data-flex-basis="453px"
-	
-></p>
-<h3 id="r2-r3配置如图">R2-R3配置如图：
-</h3><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/3.png"
-	width="2879"
-	height="1520"
-	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/3_hu_c6dee1ec85129ca3.png 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/3_hu_a59b8d59f5ee0fff.png 1024w"
-	loading="lazy"
-	
-		alt="配置"
+		alt="拓扑图"
 	
 	
 		class="gallery-image" 
@@ -521,78 +433,103 @@
 		data-flex-basis="454px"
 	
 ></p>
-<h2 id="如图">如图：
-</h2><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/4.png"
-	width="2879"
-	height="1515"
-	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/4_hu_4eb102cfe7fa9330.png 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/4_hu_2ff93bc0400d3b33.png 1024w"
-	loading="lazy"
-	
-		alt="配置"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="190"
-		data-flex-basis="456px"
-	
-></p>
-<h2 id="配置默认路由以及浮动静态路由">配置默认路由以及浮动静态路由
-</h2><h3 id="在r0上配置1条默认路由">在R0上配置1条默认路由
+<h3 id="使用设备2台pc--1台路由器--1台交换机">使用设备：2台PC | 1台路由器 | 1台交换机
+</h3><h3 id="使用线路4个直通线">使用线路：4个直通线
+</h3><h3 id="pc0网段19216810024">PC0网段：192.168.10.0/24
+</h3><h3 id="pc1网段19216820024">PC1网段：192.168.20.0/24
+</h3><h2 id="给pc0和pc1配上-ip地址--子网掩码--网关">给PC0和PC1配上 ip地址 | 子网掩码 | 网关
+</h2><h3 id="pc1">PC1:
 </h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">IP route 0.0.0.0 0.0.0.0 10.1.1.2
-</span></span><span class="line"><span class="cl">标志s*
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">IP地址:192.168.10.1
+</span></span><span class="line"><span class="cl">子网掩码：255.255.255.0
+</span></span><span class="line"><span class="cl">网关：192.168.10.254
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="命令结构">命令结构
-</h4><div class="highlight"><div class="chroma">
+</div><h3 id="pc2">PC2:
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ip route IP route 0.0.0.0 0.0.0.0 [下一跳地址]
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">IP地址:192.168.20.1
+</span></span><span class="line"><span class="cl">子网掩码：255.255.255.0
+</span></span><span class="line"><span class="cl">网关：192.168.20.254
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="在r1上配置2条静态路由回程1条路由">在R1上配置2条静态路由+回程1条路由
+</div><h2 id="在交换机下划分vlan">在交换机下划分vlan
+</h2><h3 id="vlan-10-pc0--vlan-20-pc1">vlan 10 PC0 | vlan 20 PC1
+</h3><h3 id="配置如下">配置如下：
+</h3><p><img src="/2.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="vlan配置"
+	
+	
+></p>
+<h2 id="在下路由划分子接口">在下路由划分子接口
+</h2><h3 id="配置命令缩写">配置命令『缩写』
 </h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ip route iP route 192.168.2.0 255.255.255.0 10.1.2.2
-</span></span><span class="line"><span class="cl">ip route iP route 192.168.2.0 255.255.255.0 10.1.3.2 200
-</span></span><span class="line"><span class="cl">ip route iP route 192.168.1.0 255.255.255.0 10.1.1.1
-</span></span><span class="line"><span class="cl">标志：S
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">int G0/0 
+</span></span><span class="line"><span class="cl">no sh #开启主接口
+</span></span><span class="line"><span class="cl">int G0/0.10 #创建子接口
+</span></span><span class="line"><span class="cl">ip address #配置ip
+</span></span><span class="line"><span class="cl">no sh 开启
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="命令结构-1">命令结构
-</h4><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ip route [目标网段]+[目标子网掩码]+[下一跳地址]
-</span></span><span class="line"><span class="cl">ip route [目标网段]+[目标子网掩码]+[下一跳地址] + AD值
-</span></span><span class="line"><span class="cl">AD值越低越优先
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="配置如图-1">配置如图：
-</h3><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/5.png"
-	width="2870"
-	height="1515"
-	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/5_hu_2eb60313149b8a4e.png 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/5_hu_324bc9cc1dc851b3.png 1024w"
+</div><h2 id="配置图">配置图:
+</h2><p><img src="/3.png"
+	
+	
+	
 	loading="lazy"
 	
-		alt="配置"
+		alt="子接口配置"
+	
+	
+></p>
+<h2 id="给交换机开启tunk通信">给交换机开启tunk通信
+</h2><h2 id="配置图-1">配置图:
+</h2><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/4.jpg"
+	width="2871"
+	height="1546"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/4_hu_a60789128a5a501c.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/4_hu_fd0f6c01557c1619.jpg 1024w"
+	loading="lazy"
+	
+		alt="开启"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="185"
+		data-flex-basis="445px"
+	
+></p>
+<h2 id="测试通信连通行">测试通信连通行
+</h2><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/5.jpg"
+	width="2879"
+	height="1519"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/5_hu_b0fed48cf36b82a4.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/5_hu_43270ba13c158250.jpg 1024w"
+	loading="lazy"
+	
+		alt="ping"
 	
 	
 		class="gallery-image" 
@@ -600,68 +537,8 @@
 		data-flex-basis="454px"
 	
 ></p>
-<p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/6.png"
-	width="2874"
-	height="1515"
-	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/6_hu_5a2d800264b3abd2.png 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/6_hu_80576cbf69f14bdd.png 1024w"
-	loading="lazy"
-	
-		alt="配置"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="189"
-		data-flex-basis="455px"
-	
-></p>
-<h2 id="测试网络连通性">测试网络连通性
-</h2><h3 id="pc0-ping-pc1">PC0 ping PC1
-</h3><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/7.png"
-	width="2858"
-	height="1522"
-	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/7_hu_887e155c3b026d27.png 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/7_hu_2ea569e3d14e8b4c.png 1024w"
-	loading="lazy"
-	
-		alt="ping"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="187"
-		data-flex-basis="450px"
-	
-></p>
-<h2 id="模拟故障">模拟故障
-</h2><h3 id="断开主链路r1-r2">断开主链路R1-R2
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">R1:int G0/1
-</span></span><span class="line"><span class="cl">suhtdown #关闭
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/8.png"
-	width="2877"
-	height="1524"
-	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/8_hu_d241512202e6237b.png 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/8_hu_4797242101c70af3.png 1024w"
-	loading="lazy"
-	
-		alt="关闭"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="188"
-		data-flex-basis="453px"
-	
-></p>
-<h3 id="自动启动备用链路">自动启动备用链路
-</h3><h2 id="实验结束">实验结束
-</h2><h1 id="知识点总结及概念">知识点总结及概念
-</h1><h2 id="主链路断开-通信自动切换--ad值小低越优先">『主链路断开 通信自动切换』  『AD值小低越优先』
-</h2><h3 id="直连路由-ad0-默认路由-ad1-静态路由-ad10">直连路由 AD=0 默认路由 AD=1 静态路由 AD=10
-</h3>
+<h1 id="实验结束">实验结束
+</h1>
 </section>
 
 
@@ -705,18 +582,18 @@
             
                 
 <article class="has-image">
-    <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/">
+    <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/">
         
         
             <div class="article-image">
                 
-                    <img src="https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="" data-hash="https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                    <img src="https://plus.unsplash.com/premium_photo-1722944969391-1d21a2d404ea?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFwYW58ZW58MHx8NHx8fDA%3D" loading="lazy" data-key="" data-hash="https://plus.unsplash.com/premium_photo-1722944969391-1d21a2d404ea?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFwYW58ZW58MHx8NHx8fDA%3D"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">CCNA 实验：单臂路由</h2>
+            <h2 class="article-title">CCNA 实验：默认路由配置 &#43;浮动静态路由『故障模拟』</h2>
         </div>
     </a>
 </article>
