@@ -62,14 +62,18 @@
 &lt;/div&gt;&lt;h2 id=&#34;在交换机下划分vlan&#34;&gt;在交换机下划分vlan
 &lt;/h2&gt;&lt;h3 id=&#34;vlan-10-pc0--vlan-20-pc1&#34;&gt;vlan 10 PC0 | vlan 20 PC1
 &lt;/h3&gt;&lt;h3 id=&#34;配置如下&#34;&gt;配置如下：
-&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/2.jpg&#34;
-	
-	
-	
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/2.png&#34;
+	width=&#34;2868&#34;
+	height=&#34;1519&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/2_hu_2c42c9b4d514a37f.png 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/2_hu_aebee6c5e515cd4f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;vlan配置&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;453px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;在下路由划分子接口&#34;&gt;在下路由划分子接口
@@ -91,17 +95,21 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;配置图&#34;&gt;配置图:
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/3.png&#34;
-	
-	
-	
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/3.jpg&#34;
+	width=&#34;2876&#34;
+	height=&#34;1512&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/3_hu_6ccd0f76e0028712.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/3_hu_11cf7d9e758db708.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;子接口配置&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;456px&#34;
+	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;给交换机开启tunk通信&#34;&gt;给交换机开启tunk通信
+&lt;h2 id=&#34;给交换机开启trunk通信&#34;&gt;给交换机开启trunk通信
 &lt;/h2&gt;&lt;h2 id=&#34;配置图-1&#34;&gt;配置图:
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/4.jpg&#34;
 	width=&#34;2871&#34;

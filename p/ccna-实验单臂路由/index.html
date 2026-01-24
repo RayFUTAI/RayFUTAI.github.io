@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： 在下路由划分子接口 配置命令『缩写』 1 2 3 4 5 int G0/0 no sh #开启主接口 int G0/0.10 #创建子接口 ip address #配置ip no sh 开启 配置图: ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： ">
 <title>CCNA 实验：单臂路由</title>
 
 <link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/'>
 
 <link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA 实验：单臂路由">
-<meta property='og:description' content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： 在下路由划分子接口 配置命令『缩写』 1 2 3 4 5 int G0/0 no sh #开启主接口 int G0/0.10 #创建子接口 ip address #配置ip no sh 开启 配置图: ">
+<meta property='og:description' content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： ">
 <meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='路由' /><meta property='article:published_time' content='2026-01-23T21:56:50&#43;08:00'/><meta property='article:modified_time' content='2026-01-23T21:56:50&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
 <meta name="twitter:title" content="CCNA 实验：单臂路由">
-<meta name="twitter:description" content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： 在下路由划分子接口 配置命令『缩写』 1 2 3 4 5 int G0/0 no sh #开启主接口 int G0/0.10 #创建子接口 ip address #配置ip no sh 开启 配置图: "><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： "><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
     <link rel="shortcut icon" href="/favicon.png" />
 
@@ -327,7 +327,7 @@
       </ol>
     </li>
     <li><a href="#配置图">配置图:</a></li>
-    <li><a href="#给交换机开启tunk通信">给交换机开启tunk通信</a></li>
+    <li><a href="#给交换机开启trunk通信">给交换机开启trunk通信</a></li>
     <li><a href="#配置图-1">配置图:</a></li>
     <li><a href="#测试通信连通行">测试通信连通行</a></li>
   </ol>
@@ -467,14 +467,18 @@
 </div><h2 id="在交换机下划分vlan">在交换机下划分vlan
 </h2><h3 id="vlan-10-pc0--vlan-20-pc1">vlan 10 PC0 | vlan 20 PC1
 </h3><h3 id="配置如下">配置如下：
-</h3><p><img src="/2.jpg"
-	
-	
-	
+</h3><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/2.png"
+	width="2868"
+	height="1519"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/2_hu_2c42c9b4d514a37f.png 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/2_hu_aebee6c5e515cd4f.png 1024w"
 	loading="lazy"
 	
 		alt="vlan配置"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="188"
+		data-flex-basis="453px"
 	
 ></p>
 <h2 id="在下路由划分子接口">在下路由划分子接口
@@ -496,17 +500,21 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="配置图">配置图:
-</h2><p><img src="/3.png"
-	
-	
-	
+</h2><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/3.jpg"
+	width="2876"
+	height="1512"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/3_hu_6ccd0f76e0028712.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/3_hu_11cf7d9e758db708.jpg 1024w"
 	loading="lazy"
 	
 		alt="子接口配置"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="456px"
+	
 ></p>
-<h2 id="给交换机开启tunk通信">给交换机开启tunk通信
+<h2 id="给交换机开启trunk通信">给交换机开启trunk通信
 </h2><h2 id="配置图-1">配置图:
 </h2><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/4.jpg"
 	width="2871"
