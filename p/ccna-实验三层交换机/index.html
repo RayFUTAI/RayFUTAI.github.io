@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="记录遇到的虚拟机的问题以及解决方案！">
-<title>18岁的第一站</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验目地：不用路由器仅用三层交换机实现vlan10 and vlan20 互相通信 实验拓扑图 使用设备：2台PC | 1台三层交换机 使用线路：2个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 配置如下： 开启路由模式 1 ip routing 创建vlan以及配置ip『缩写』 1 2 3 4 5 6 7 8 9 # 三层交换机下: vlan 10 vlan20 int vlan 10 ip address 192.168.10.254 255.255.255.0 no sh int vlan 20 ip address 192.168.20.254 255.255.255.0 no sh 配置如图： ">
+<title>CCNA 实验：三层交换机</title>
 
-<link rel='canonical' href='https://RayFUTAI.github.ioc/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/'>
+<link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/'>
 
-<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="18岁的第一站">
-<meta property='og:description' content="记录遇到的虚拟机的问题以及解决方案！">
-<meta property='og:url' content='https://RayFUTAI.github.ioc/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/'>
+<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA 实验：三层交换机">
+<meta property='og:description' content="实验目地：不用路由器仅用三层交换机实现vlan10 and vlan20 互相通信 实验拓扑图 使用设备：2台PC | 1台三层交换机 使用线路：2个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 配置如下： 开启路由模式 1 ip routing 创建vlan以及配置ip『缩写』 1 2 3 4 5 6 7 8 9 # 三层交换机下: vlan 10 vlan20 int vlan 10 ip address 192.168.10.254 255.255.255.0 no sh int vlan 20 ip address 192.168.20.254 255.255.255.0 no sh 配置如图： ">
+<meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-01-18T18:25:44&#43;08:00'/><meta property='article:modified_time' content='2026-01-18T18:25:44&#43;08:00'/><meta property='og:image' content='https://plus.unsplash.com/premium_photo-1675148247638-fb5c8db249a2?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8JUU1JThBJUE4JUU2JUJDJUFCfGVufDB8fDB8fHww' />
-<meta name="twitter:title" content="18岁的第一站">
-<meta name="twitter:description" content="记录遇到的虚拟机的问题以及解决方案！"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://plus.unsplash.com/premium_photo-1675148247638-fb5c8db249a2?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8JUU1JThBJUE4JUU2JUJDJUFCfGVufDB8fDB8fHww' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='交换机' /><meta property='article:published_time' content='2026-01-24T14:55:57&#43;08:00'/><meta property='article:modified_time' content='2026-01-24T14:55:57&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1483239546567-ccc4ce2b344a?q=80&amp;w=3092&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+<meta name="twitter:title" content="CCNA 实验：三层交换机">
+<meta name="twitter:description" content="实验目地：不用路由器仅用三层交换机实现vlan10 and vlan20 互相通信 实验拓扑图 使用设备：2台PC | 1台三层交换机 使用线路：2个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 配置如下： 开启路由模式 1 ip routing 创建vlan以及配置ip『缩写』 1 2 3 4 5 6 7 8 9 # 三层交换机下: vlan 10 vlan20 int vlan 10 ip address 192.168.10.254 255.255.255.0 no sh int vlan 20 ip address 192.168.20.254 255.255.255.0 no sh 配置如图： "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://images.unsplash.com/photo-1483239546567-ccc4ce2b344a?q=80&amp;w=3092&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -301,14 +301,27 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#前言">前言：</a></li>
-    <li><a href="#问题">问题：</a></li>
-    <li><a href="#解决1虚拟机打不开">解决：1.虚拟机打不开</a></li>
-    <li><a href="#解决-2网络掉线">解决: 2.网络掉线</a>
+    <li><a href="#实验拓扑图">实验拓扑图</a>
       <ol>
-        <li><a href="#这是我的第一篇文章不知道写什么但是我还是随便写出来了以后将在这里分享我的ccna学习内容和网络实验欢迎大家见证我的成长">『这是我的第一篇文章：不知道写什么但是我还是随便写出来了以后将在这里分享我的CCNA学习内容和网络实验！欢迎大家见证我的成长』</a></li>
+        <li><a href="#使用设备2台pc--1台三层交换机">使用设备：2台PC | 1台三层交换机</a></li>
+        <li><a href="#使用线路2个直通线">使用线路：2个直通线</a></li>
+        <li><a href="#pc0网段19216810024">PC0网段：192.168.10.0/24</a></li>
+        <li><a href="#pc1网段19216820024">PC1网段：192.168.20.0/24</a></li>
       </ol>
     </li>
+    <li><a href="#给pc0和pc1配上-ip地址--子网掩码--网关">给PC0和PC1配上 ip地址 | 子网掩码 | 网关</a>
+      <ol>
+        <li><a href="#pc1">PC1:</a></li>
+        <li><a href="#pc2">PC2:</a></li>
+        <li><a href="#配置如下">配置如下：</a></li>
+      </ol>
+    </li>
+    <li><a href="#开启路由模式">开启路由模式</a></li>
+    <li><a href="#创建vlan以及配置ip缩写">创建vlan以及配置ip『缩写』</a></li>
+    <li><a href="#配置如图">配置如图：</a></li>
+    <li><a href="#划分vlan-10-20-缩写">划分vlan 10| 20 『缩写』</a></li>
+    <li><a href="#配置如图-1">配置如图：</a></li>
+    <li><a href="#测试通信连通行">测试通信连通行</a></li>
   </ol>
 </nav>
         </div>
@@ -323,9 +336,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/">
+            <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
                 
-                    <img src="https://plus.unsplash.com/premium_photo-1675148247638-fb5c8db249a2?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8JUU1JThBJUE4JUU2JUJDJUFCfGVufDB8fDB8fHww" loading="lazy" alt="Featured image of post 18岁的第一站" />
+                    <img src="https://images.unsplash.com/photo-1483239546567-ccc4ce2b344a?q=80&amp;w=3092&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" alt="Featured image of post CCNA 实验：三层交换机" />
                 
             </a>
         </div>
@@ -335,8 +348,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/%E5%85%B3%E4%BA%8E/" >
-                关于
+            <a href="/categories/%E5%AE%9E%E9%AA%8C/" >
+                实验
             </a>
         
     </header>
@@ -344,13 +357,9 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/">18岁的第一站</a>
+            <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">CCNA 实验：三层交换机</a>
         </h2>
     
-        
-        <h3 class="article-subtitle">
-            记录遇到的虚拟机的问题以及解决方案！
-        </h3>
         
     </div>
 
@@ -370,7 +379,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published" datetime='2026-01-18T18:25:44&#43;08:00'>Jan 18, 2026</time>
+                <time class="article-time--published" datetime='2026-01-24T14:55:57&#43;08:00'>Jan 24, 2026</time>
             </div>
         
 
@@ -400,97 +409,185 @@
     <section class="article-content">
     
     
-    <h2 id="前言">前言：
-</h2><p>这是我的第一篇博客也是我18岁的第一篇，简单说一下我为什么要写这个博客：&ldquo;为了记录我的CCNA学习记录，并为我的职业生涯攒下&rsquo;技术复利&rsquo;和&rsquo;记录成长&rsquo;&ldquo;从0-1很难~但是这是我的开始！</p>
-<h2 id="问题">问题：
-</h2><p>今天在运行虚拟机的过程中遇到了二个问题分别是&quot;黑屏问题&quot;和&quot;网络掉线问题&rdquo;</p>
-<h2 id="解决1虚拟机打不开">解决：1.虚拟机打不开
-</h2><p>我遇到的问题的锁定保护因上次异常关机虚拟内部认为还没关机-解决方案:
-1.查看存放虚拟的文件夹
-<img src="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-1.png"
-	width="1728"
-	height="972"
-	srcset="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-1_hu_4da4191cb682cc3f.png 480w, /p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-1_hu_7b42acd5f72ad63b.png 1024w"
+    <h1 id="实验目地不用路由器仅用三层交换机实现vlan10-and-vlan20-互相通信">实验目地：不用路由器仅用三层交换机实现vlan10 and vlan20 互相通信
+</h1><h2 id="实验拓扑图">实验拓扑图
+</h2><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/1.jpg"
+	width="2879"
+	height="1523"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/1_hu_928114f9364dd6a3.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/1_hu_2d52d350f1458bed.jpg 1024w"
 	loading="lazy"
 	
-		alt="1-1"
+		alt="拓扑图"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="177"
-		data-flex-basis="426px"
+		data-flex-grow="189"
+		data-flex-basis="453px"
 	
 ></p>
-<p>2.后缀为.lck文件夹全部删除
-<img src="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-2.png"
-	width="1780"
-	height="1400"
-	srcset="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-2_hu_98dc63bf581f5c66.png 480w, /p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-2_hu_2c291f0ebce2bac7.png 1024w"
+<h3 id="使用设备2台pc--1台三层交换机">使用设备：2台PC | 1台三层交换机
+</h3><h3 id="使用线路2个直通线">使用线路：2个直通线
+</h3><h3 id="pc0网段19216810024">PC0网段：192.168.10.0/24
+</h3><h3 id="pc1网段19216820024">PC1网段：192.168.20.0/24
+</h3><h2 id="给pc0和pc1配上-ip地址--子网掩码--网关">给PC0和PC1配上 ip地址 | 子网掩码 | 网关
+</h2><h3 id="pc1">PC1:
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">IP地址:192.168.10.1
+</span></span><span class="line"><span class="cl">子网掩码：255.255.255.0
+</span></span><span class="line"><span class="cl">网关：192.168.10.254
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="pc2">PC2:
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">IP地址:192.168.20.1
+</span></span><span class="line"><span class="cl">子网掩码：255.255.255.0
+</span></span><span class="line"><span class="cl">网关：192.168.20.254
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="配置如下">配置如下：
+</h3><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/2.jpg"
+	width="2879"
+	height="1522"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/2_hu_b0eff557c2a7bf5e.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/2_hu_13952558fbba296.jpg 1024w"
 	loading="lazy"
 	
-		alt="1-2"
+		alt="ip配置"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="127"
-		data-flex-basis="305px"
+		data-flex-grow="189"
+		data-flex-basis="453px"
 	
 ></p>
-<p>3.返回界面重新启动</p>
-<h2 id="解决-2网络掉线">解决: 2.网络掉线
-</h2><p>这个问题是和第一个问题同时发生的&quot;线缆已拔出&quot;虚拟网卡掉线了-解决方案：
-1.在windows设置搜索&quot;服务
-<img src="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-3.png"
-	width="1728"
-	height="972"
-	srcset="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-3_hu_19ffbfd2e2df6172.png 480w, /p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-3_hu_266efd88e57d6a12.png 1024w"
+<h2 id="开启路由模式">开启路由模式
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ip routing
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="创建vlan以及配置ip缩写">创建vlan以及配置ip『缩写』
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 三层交换机下:
+</span></span><span class="line"><span class="cl">vlan 10
+</span></span><span class="line"><span class="cl">vlan20
+</span></span><span class="line"><span class="cl">int vlan 10
+</span></span><span class="line"><span class="cl">ip address 192.168.10.254 255.255.255.0
+</span></span><span class="line"><span class="cl">no sh
+</span></span><span class="line"><span class="cl">int vlan 20
+</span></span><span class="line"><span class="cl">ip address 192.168.20.254 255.255.255.0
+</span></span><span class="line"><span class="cl">no sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置如图">配置如图：
+</h2><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/3.jpg"
+	width="2879"
+	height="1523"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/3_hu_cb5445c9ac6141df.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/3_hu_3fd175be495250bb.jpg 1024w"
 	loading="lazy"
 	
-		alt="1-3"
+		alt="vlan配置"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="177"
-		data-flex-basis="426px"
+		data-flex-grow="189"
+		data-flex-basis="453px"
 	
 ></p>
-<p>2.往下拉&quot;找到&quot;VMware NAT Service和VMnetDHC更改设置&quot;启动&rdquo;
-<img src="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-5.png"
-	width="1728"
-	height="972"
-	srcset="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-5_hu_4bc6f79d25812cd4.png 480w, /p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-5_hu_61a5e0d902e99327.png 1024w"
+<h2 id="划分vlan-10-20-缩写">划分vlan 10| 20 『缩写』
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 三层交换机下:
+</span></span><span class="line"><span class="cl">int G0/1
+</span></span><span class="line"><span class="cl">swit mo acc
+</span></span><span class="line"><span class="cl">swit acc vlan 10
+</span></span><span class="line"><span class="cl">int G0/2
+</span></span><span class="line"><span class="cl">swit mode acc
+</span></span><span class="line"><span class="cl">swit acc vlan 20
+</span></span><span class="line"><span class="cl">no sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置如图-1">配置如图：
+</h2><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/4.jpg"
+	width="2879"
+	height="1520"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/4_hu_56443f6b1fadcbb8.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/4_hu_9691d641516e737d.jpg 1024w"
 	loading="lazy"
 	
-		alt="1-5"
+		alt="vlan划分配置"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="177"
-		data-flex-basis="426px"
+		data-flex-grow="189"
+		data-flex-basis="454px"
 	
 ></p>
-<p><img src="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-4.png"
-	width="1728"
-	height="972"
-	srcset="/p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-4_hu_bce25e5dff03a966.png 480w, /p/18%E5%B2%81%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AB%99/1-4_hu_10778ecfba681adb.png 1024w"
+<h2 id="测试通信连通行">测试通信连通行
+</h2><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/5.jpg"
+	width="2879"
+	height="1525"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/5_hu_dc22bca68e289a26.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/5_hu_b6d2bdc0b01b1276.jpg 1024w"
 	loading="lazy"
 	
-		alt="1-4"
+		alt="ping"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="177"
-		data-flex-basis="426px"
+		data-flex-grow="188"
+		data-flex-basis="453px"
 	
 ></p>
-<p>3.返回虚拟机即可</p>
-<h3 id="这是我的第一篇文章不知道写什么但是我还是随便写出来了以后将在这里分享我的ccna学习内容和网络实验欢迎大家见证我的成长">『这是我的第一篇文章：不知道写什么但是我还是随便写出来了以后将在这里分享我的CCNA学习内容和网络实验！欢迎大家见证我的成长』
-</h3>
+<h1 id="实验结束">实验结束
+</h1>
 </section>
 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/ccna/">CCNA</a>
+        
+            <a href="/tags/%E4%BA%A4%E6%8D%A2%E6%9C%BA/">交换机</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -513,6 +610,72 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="" data-hash="https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CCNA 实验：单臂路由</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE-%E6%B5%AE%E5%8A%A8%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E6%95%85%E9%9A%9C%E6%A8%A1%E6%8B%9F/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://plus.unsplash.com/premium_photo-1722944969391-1d21a2d404ea?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFwYW58ZW58MHx8NHx8fDA%3D" loading="lazy" data-key="" data-hash="https://plus.unsplash.com/premium_photo-1722944969391-1d21a2d404ea?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8amFwYW58ZW58MHx8NHx8fDA%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CCNA 实验：默认路由配置 &#43;浮动静态路由『故障模拟』</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E6%88%91%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%9C%8B%E6%87%82%E8%B7%AF%E7%94%B1%E8%A1%A8/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1519638399535-1b036603ac77?q=80&amp;w=1631&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="" data-hash="https://images.unsplash.com/photo-1519638399535-1b036603ac77?q=80&amp;w=1631&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CCNA 实验：静态路由配置『我第一次看懂路由表』</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

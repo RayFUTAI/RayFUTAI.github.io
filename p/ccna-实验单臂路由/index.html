@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：3个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： ">
 <title>CCNA 实验：单臂路由</title>
 
 <link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/'>
 
 <link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA 实验：单臂路由">
-<meta property='og:description' content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： ">
+<meta property='og:description' content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：3个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： ">
 <meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='路由' /><meta property='article:published_time' content='2026-01-23T21:56:50&#43;08:00'/><meta property='article:modified_time' content='2026-01-23T21:56:50&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
 <meta name="twitter:title" content="CCNA 实验：单臂路由">
-<meta name="twitter:description" content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：4个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： "><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="实验目地：解决物理接口不足问题，实现不同vlan之间跨网段通信 实验拓扑图 使用设备：2台PC | 1台路由器 | 1台交换机 使用线路：3个直通线 PC0网段：192.168.10.0/24 PC1网段：192.168.20.0/24 给PC0和PC1配上 ip地址 | 子网掩码 | 网关 PC1: 1 2 3 IP地址:192.168.10.1 子网掩码：255.255.255.0 网关：192.168.10.254 PC2: 1 2 3 IP地址:192.168.20.1 子网掩码：255.255.255.0 网关：192.168.20.254 在交换机下划分vlan vlan 10 PC0 | vlan 20 PC1 配置如下： "><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://images.unsplash.com/photo-1484995978482-cf913162930c?q=80&amp;w=1505&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
     <link rel="shortcut icon" href="/favicon.png" />
 
@@ -175,7 +175,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-torii"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4c5.333 1.333 10.667 1.333 16 0" /><path d="M4 8h16" /><path d="M12 5v3" /><path d="M18 4.5v15.5" /><path d="M6 4.5v15.5" /></svg>
 
                 
-                <span>日本</span>
+                <span>日语</span>
             </a>
         </li>
         
@@ -304,7 +304,7 @@
     <li><a href="#实验拓扑图">实验拓扑图</a>
       <ol>
         <li><a href="#使用设备2台pc--1台路由器--1台交换机">使用设备：2台PC | 1台路由器 | 1台交换机</a></li>
-        <li><a href="#使用线路4个直通线">使用线路：4个直通线</a></li>
+        <li><a href="#使用线路3个直通线">使用线路：3个直通线</a></li>
         <li><a href="#pc0网段19216810024">PC0网段：192.168.10.0/24</a></li>
         <li><a href="#pc1网段19216820024">PC1网段：192.168.20.0/24</a></li>
       </ol>
@@ -434,7 +434,7 @@
 	
 ></p>
 <h3 id="使用设备2台pc--1台路由器--1台交换机">使用设备：2台PC | 1台路由器 | 1台交换机
-</h3><h3 id="使用线路4个直通线">使用线路：4个直通线
+</h3><h3 id="使用线路3个直通线">使用线路：3个直通线
 </h3><h3 id="pc0网段19216810024">PC0网段：192.168.10.0/24
 </h3><h3 id="pc1网段19216820024">PC1网段：192.168.20.0/24
 </h3><h2 id="给pc0和pc1配上-ip地址--子网掩码--网关">给PC0和PC1配上 ip地址 | 子网掩码 | 网关
@@ -621,6 +621,25 @@
 
         <div class="article-details">
             <h2 class="article-title">CCNA 实验：静态路由配置『我第一次看懂路由表』</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1483239546567-ccc4ce2b344a?q=80&amp;w=3092&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="" data-hash="https://images.unsplash.com/photo-1483239546567-ccc4ce2b344a?q=80&amp;w=3092&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CCNA 实验：三层交换机</h2>
         </div>
     </a>
 </article>

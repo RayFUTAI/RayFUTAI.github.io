@@ -6,7 +6,180 @@
         <description>Recent content in 实验 on 伏太中文技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 23 Jan 2026 21:56:50 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/categories/%E5%AE%9E%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 24 Jan 2026 14:55:57 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/categories/%E5%AE%9E%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CCNA 实验：三层交换机</title>
+        <link>https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/</link>
+        <pubDate>Sat, 24 Jan 2026 14:55:57 +0800</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/</guid>
+        <description>&lt;img src="https://images.unsplash.com/photo-1483239546567-ccc4ce2b344a?q=80&amp;w=3092&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Featured image of post CCNA 实验：三层交换机" /&gt;&lt;h1 id=&#34;实验目地不用路由器仅用三层交换机实现vlan10-and-vlan20-互相通信&#34;&gt;实验目地：不用路由器仅用三层交换机实现vlan10 and vlan20 互相通信
+&lt;/h1&gt;&lt;h2 id=&#34;实验拓扑图&#34;&gt;实验拓扑图
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/1.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1523&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/1_hu_928114f9364dd6a3.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/1_hu_2d52d350f1458bed.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;拓扑图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;使用设备2台pc--1台三层交换机&#34;&gt;使用设备：2台PC | 1台三层交换机
+&lt;/h3&gt;&lt;h3 id=&#34;使用线路2个直通线&#34;&gt;使用线路：2个直通线
+&lt;/h3&gt;&lt;h3 id=&#34;pc0网段19216810024&#34;&gt;PC0网段：192.168.10.0/24
+&lt;/h3&gt;&lt;h3 id=&#34;pc1网段19216820024&#34;&gt;PC1网段：192.168.20.0/24
+&lt;/h3&gt;&lt;h2 id=&#34;给pc0和pc1配上-ip地址--子网掩码--网关&#34;&gt;给PC0和PC1配上 ip地址 | 子网掩码 | 网关
+&lt;/h2&gt;&lt;h3 id=&#34;pc1&#34;&gt;PC1:
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;IP地址:192.168.10.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;子网掩码：255.255.255.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;网关：192.168.10.254
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;pc2&#34;&gt;PC2:
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;IP地址:192.168.20.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;子网掩码：255.255.255.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;网关：192.168.20.254
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;配置如下&#34;&gt;配置如下：
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/2.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1522&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/2_hu_b0eff557c2a7bf5e.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/2_hu_13952558fbba296.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ip配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;开启路由模式&#34;&gt;开启路由模式
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ip routing
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;创建vlan以及配置ip缩写&#34;&gt;创建vlan以及配置ip『缩写』
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 三层交换机下:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vlan 10
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vlan20
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int vlan 10
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ip address 192.168.10.254 255.255.255.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;no sh
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int vlan 20
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ip address 192.168.20.254 255.255.255.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;no sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;配置如图&#34;&gt;配置如图：
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/3.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1523&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/3_hu_cb5445c9ac6141df.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/3_hu_3fd175be495250bb.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;vlan配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;划分vlan-10-20-缩写&#34;&gt;划分vlan 10| 20 『缩写』
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 三层交换机下:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int G0/1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;swit mo acc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;swit acc vlan 10
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;int G0/2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;swit mode acc
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;swit acc vlan 20
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;no sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;配置如图-1&#34;&gt;配置如图：
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/4.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1520&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/4_hu_56443f6b1fadcbb8.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/4_hu_9691d641516e737d.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;vlan划分配置&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;454px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;测试通信连通行&#34;&gt;测试通信连通行
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/5.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1525&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/5_hu_dc22bca68e289a26.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA/5_hu_b6d2bdc0b01b1276.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ping&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;实验结束&#34;&gt;实验结束
+&lt;/h1&gt;</description>
+        </item>
+        <item>
         <title>CCNA 实验：单臂路由</title>
         <link>https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1/</link>
         <pubDate>Fri, 23 Jan 2026 21:56:50 +0800</pubDate>
@@ -29,7 +202,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;使用设备2台pc--1台路由器--1台交换机&#34;&gt;使用设备：2台PC | 1台路由器 | 1台交换机
-&lt;/h3&gt;&lt;h3 id=&#34;使用线路4个直通线&#34;&gt;使用线路：4个直通线
+&lt;/h3&gt;&lt;h3 id=&#34;使用线路3个直通线&#34;&gt;使用线路：3个直通线
 &lt;/h3&gt;&lt;h3 id=&#34;pc0网段19216810024&#34;&gt;PC0网段：192.168.10.0/24
 &lt;/h3&gt;&lt;h3 id=&#34;pc1网段19216820024&#34;&gt;PC1网段：192.168.20.0/24
 &lt;/h3&gt;&lt;h2 id=&#34;给pc0和pc1配上-ip地址--子网掩码--网关&#34;&gt;给PC0和PC1配上 ip地址 | 子网掩码 | 网关
