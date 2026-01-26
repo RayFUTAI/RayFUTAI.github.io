@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="STP『经典生成协议树』 1.为什么需要STP?『环路的危害』 当交换机之间存冗余链路时，如果没有STP：会产生以下灾难 1. 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络 2. MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动 2.核心内容根桥『Root Bridge』 STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』 选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜 BRidge ID 结构『8字节』 1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数 2.Extended System ID『12bits』:即VLAN ID 3.MAC Address『48bits』:当优先级相同时比MAC地址大小 3.STP 端口角色与状态 根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』 状态：Forwarding『转发』 指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口 状态：Forwarding『转发』 注： 桥更上的所有物理端口都是 DP\n">
-<title>CCNA理论知识『经典生成协议树』</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1.为什么要用Prtfast？（解决收敛延迟） 在标准的生成树协议(STP)中从一个端口接入网要经历以下流程: Blocking(堵塞)-Listening(监听)-Learning(学习)-Forwarding(转发) 这个过程通常需要30秒 场景模拟: 如果你的一台PC连接到交换机，pc启动很快网卡已经UP了并开始DHCP请求，但是交换机还在慢悠悠地进行STP计算（处理监听状态）结果就是DHCP超时，网络连接失败30秒后才可以上网这对用户来说是灾难！ 2.Prtfast底层逻辑 当你对一个接口使用Prtfast后接口会跳过Listening(监听)-Learning(学习)阶段+直接进入Forwarding(转发)状态 1.瞬间UP:端口几乎在物理链路连通之间的同时就能转发数据包。 2.适用对象:只能适用终端设备（pc，服务器，打印机）的接口 3.禁止对象:交换机，集线器或者网桥 如果你在二个交换机互联的链路上开启Prtfast，极大概率引起广播风暴!!! 3.配置指令 方式A：接口配置（针对特定接口） 如下（在交换机下） 1 2 interface G0/1 spanning-tree portfast 方式B：全局配置（针对所有Access端口） 如下（在交换机下） 1 spanning-tree portfast default 4.进阶补丁:BPDU Guard 开启了portfast 之后如果有人不小心接上了一个交换机会导致广播风暴，我们要配合BPDU Guard使用： 如下（在交换机下） 1 spanning-tree bpduguard enable 开启这个以后portfast 端口收到BPDU包他会立即进入err-disable状态，直接把物理链路掐断。 总结: 优点:解决DHCP超时问题，提升用户体验！ 风险:配置不当会导致物理环路! 黄金法则：终端开启，互联禁止，必须配合BPDU Guard！ ">
+<title>CCNA 理论：STP-Prtfast工具</title>
 
-<link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%BB%8F%E5%85%B8%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/'>
+<link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAstp-prtfast%E5%B7%A5%E5%85%B7/'>
 
-<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA理论知识『经典生成协议树』">
-<meta property='og:description' content="STP『经典生成协议树』 1.为什么需要STP?『环路的危害』 当交换机之间存冗余链路时，如果没有STP：会产生以下灾难 1. 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络 2. MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动 2.核心内容根桥『Root Bridge』 STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』 选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜 BRidge ID 结构『8字节』 1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数 2.Extended System ID『12bits』:即VLAN ID 3.MAC Address『48bits』:当优先级相同时比MAC地址大小 3.STP 端口角色与状态 根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』 状态：Forwarding『转发』 指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口 状态：Forwarding『转发』 注： 桥更上的所有物理端口都是 DP\n">
-<meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%BB%8F%E5%85%B8%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/'>
+<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA 理论：STP-Prtfast工具">
+<meta property='og:description' content="1.为什么要用Prtfast？（解决收敛延迟） 在标准的生成树协议(STP)中从一个端口接入网要经历以下流程: Blocking(堵塞)-Listening(监听)-Learning(学习)-Forwarding(转发) 这个过程通常需要30秒 场景模拟: 如果你的一台PC连接到交换机，pc启动很快网卡已经UP了并开始DHCP请求，但是交换机还在慢悠悠地进行STP计算（处理监听状态）结果就是DHCP超时，网络连接失败30秒后才可以上网这对用户来说是灾难！ 2.Prtfast底层逻辑 当你对一个接口使用Prtfast后接口会跳过Listening(监听)-Learning(学习)阶段+直接进入Forwarding(转发)状态 1.瞬间UP:端口几乎在物理链路连通之间的同时就能转发数据包。 2.适用对象:只能适用终端设备（pc，服务器，打印机）的接口 3.禁止对象:交换机，集线器或者网桥 如果你在二个交换机互联的链路上开启Prtfast，极大概率引起广播风暴!!! 3.配置指令 方式A：接口配置（针对特定接口） 如下（在交换机下） 1 2 interface G0/1 spanning-tree portfast 方式B：全局配置（针对所有Access端口） 如下（在交换机下） 1 spanning-tree portfast default 4.进阶补丁:BPDU Guard 开启了portfast 之后如果有人不小心接上了一个交换机会导致广播风暴，我们要配合BPDU Guard使用： 如下（在交换机下） 1 spanning-tree bpduguard enable 开启这个以后portfast 端口收到BPDU包他会立即进入err-disable状态，直接把物理链路掐断。 总结: 优点:解决DHCP超时问题，提升用户体验！ 风险:配置不当会导致物理环路! 黄金法则：终端开启，互联禁止，必须配合BPDU Guard！ ">
+<meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAstp-prtfast%E5%B7%A5%E5%85%B7/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='理论' /><meta property='article:published_time' content='2026-01-21T15:51:37&#43;08:00'/><meta property='article:modified_time' content='2026-01-21T15:51:37&#43;08:00'/><meta property='og:image' content='https://plus.unsplash.com/premium_photo-1746101508295-1757c4df46f5?q=80&amp;w=1471&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
-<meta name="twitter:title" content="CCNA理论知识『经典生成协议树』">
-<meta name="twitter:description" content="STP『经典生成协议树』 1.为什么需要STP?『环路的危害』 当交换机之间存冗余链路时，如果没有STP：会产生以下灾难 1. 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络 2. MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动 2.核心内容根桥『Root Bridge』 STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』 选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜 BRidge ID 结构『8字节』 1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数 2.Extended System ID『12bits』:即VLAN ID 3.MAC Address『48bits』:当优先级相同时比MAC地址大小 3.STP 端口角色与状态 根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』 状态：Forwarding『转发』 指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口 状态：Forwarding『转发』 注： 桥更上的所有物理端口都是 DP\n"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://plus.unsplash.com/premium_photo-1746101508295-1757c4df46f5?q=80&amp;w=1471&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='理论' /><meta property='article:tag' content='STP' /><meta property='article:published_time' content='2026-01-26T20:59:51&#43;08:00'/><meta property='article:modified_time' content='2026-01-26T20:59:51&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1599173704879-2e407aa34cde?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+<meta name="twitter:title" content="CCNA 理论：STP-Prtfast工具">
+<meta name="twitter:description" content="1.为什么要用Prtfast？（解决收敛延迟） 在标准的生成树协议(STP)中从一个端口接入网要经历以下流程: Blocking(堵塞)-Listening(监听)-Learning(学习)-Forwarding(转发) 这个过程通常需要30秒 场景模拟: 如果你的一台PC连接到交换机，pc启动很快网卡已经UP了并开始DHCP请求，但是交换机还在慢悠悠地进行STP计算（处理监听状态）结果就是DHCP超时，网络连接失败30秒后才可以上网这对用户来说是灾难！ 2.Prtfast底层逻辑 当你对一个接口使用Prtfast后接口会跳过Listening(监听)-Learning(学习)阶段+直接进入Forwarding(转发)状态 1.瞬间UP:端口几乎在物理链路连通之间的同时就能转发数据包。 2.适用对象:只能适用终端设备（pc，服务器，打印机）的接口 3.禁止对象:交换机，集线器或者网桥 如果你在二个交换机互联的链路上开启Prtfast，极大概率引起广播风暴!!! 3.配置指令 方式A：接口配置（针对特定接口） 如下（在交换机下） 1 2 interface G0/1 spanning-tree portfast 方式B：全局配置（针对所有Access端口） 如下（在交换机下） 1 spanning-tree portfast default 4.进阶补丁:BPDU Guard 开启了portfast 之后如果有人不小心接上了一个交换机会导致广播风暴，我们要配合BPDU Guard使用： 如下（在交换机下） 1 spanning-tree bpduguard enable 开启这个以后portfast 端口收到BPDU包他会立即进入err-disable状态，直接把物理链路掐断。 总结: 优点:解决DHCP超时问题，提升用户体验！ 风险:配置不当会导致物理环路! 黄金法则：终端开启，互联禁止，必须配合BPDU Guard！ "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://images.unsplash.com/photo-1599173704879-2e407aa34cde?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -230,12 +230,13 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#当交换机之间存冗余链路时如果没有stp会产生以下灾难">当交换机之间存冗余链路时，如果没有STP：会产生以下灾难</a>
+    <li><a href="#blocking堵塞-listening监听-learning学习-forwarding转发">Blocking(堵塞)-Listening(监听)-Learning(学习)-Forwarding(转发)</a></li>
+    <li><a href="#这个过程通常需要30秒">这个过程通常需要30秒</a></li>
+    <li><a href="#场景模拟">场景模拟:</a>
       <ol>
         <li>
           <ol>
-            <li><a href="#1-广播风暴broadcast-storm广播帧在环路中无限循环直到淹没网络">1. 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络</a></li>
-            <li><a href="#2-mac地址漂移mac-address-flapping交换机不断从不同接口学习同一个mac地址导致mac表剧烈躁动">2. MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动</a></li>
+            <li><a href="#如果你的一台pc连接到交换机pc启动很快网卡已经up了并开始dhcp请求但是交换机还在慢悠悠地进行stp计算处理监听状态结果就是dhcp超时网络连接失败30秒后才可以上网这对用户来说是灾难">如果你的一台PC连接到交换机，pc启动很快网卡已经UP了并开始DHCP请求，但是交换机还在慢悠悠地进行STP计算（处理监听状态）结果就是DHCP超时，网络连接失败30秒后才可以上网这对用户来说是灾难！</a></li>
           </ol>
         </li>
       </ol>
@@ -243,44 +244,62 @@
   </ol>
 
   <ol>
-    <li><a href="#选举规则拥有最低桥-id-lowst-bridge-id的交换机获胜">选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜</a>
-      <ol>
-        <li><a href="#bridge-id-结构8字节">BRidge ID 结构『8字节』</a>
-          <ol>
-            <li><a href="#1-bridge-priority4bits默认值32768-必须是4086的倍数">1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数</a></li>
-            <li><a href="#2extended-system-id12bits即vlan-id">2.Extended System ID『12bits』:即VLAN ID</a></li>
-            <li><a href="#3mac-address48bits当优先级相同时比mac地址大小">3.MAC Address『48bits』:当优先级相同时比MAC地址大小</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-  </ol>
-
-  <ol>
-    <li><a href="#根端口root-portrp非根桥离根桥最近的端口每个非根桥只有一个">根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』</a></li>
-    <li><a href="#状态forwarding转发">状态：Forwarding『转发』</a></li>
-    <li><a href="#指定端口designated-portdp每个网段中离根桥最近的端口">指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口</a></li>
-    <li><a href="#状态forwarding转发-1">状态：Forwarding『转发』</a></li>
-    <li><a href="#非指定端口non-designated-port被逻辑阻塞的端口">非指定端口『Non-Designated Port』被逻辑阻塞的端口</a></li>
-    <li><a href="#状态blocking堵塞">状态：Blocking『堵塞』</a></li>
-  </ol>
-
-  <ol>
-    <li><a href="#stp根据链路带宽计算cost带宽越高cost越小越优秀">STP根据链路带宽计算Cost:带宽越高Cost越小『越优秀』</a></li>
-  </ol>
-
-  <ol>
-    <li><a href="#当需要确定root-port-或者designated-port时按照以下顺序越小越好">当需要确定ROOT Port 或者Designated Port时按照以下顺序『越小越好』</a>
+    <li>
       <ol>
         <li>
           <ol>
-            <li><a href="#1-lowest-root-path-cost--最低根路径开销">1. Lowest Root Path Cost  :最低根路径开销</a></li>
-            <li><a href="#2-lowest-sending-brdg-id-最低发送方交换机id">2. Lowest Sending Brdg Id :最低发送方交换机ID</a></li>
-            <li><a href="#3-lowest-sending-port-id-最低发送方端口id">3. Lowest Sending Port Id :最低发送方端口ID</a></li>
+            <li><a href="#当你对一个接口使用prtfast后接口会跳过listening监听-learning学习阶段直接进入forwarding转发状态">当你对一个接口使用Prtfast后接口会跳过Listening(监听)-Learning(学习)阶段+直接进入Forwarding(转发)状态</a></li>
+          </ol>
+        </li>
+        <li><a href="#1瞬间up端口几乎在物理链路连通之间的同时就能转发数据包">1.瞬间UP:端口几乎在物理链路连通之间的同时就能转发数据包。</a></li>
+        <li><a href="#2适用对象只能适用终端设备pc服务器打印机的接口">2.适用对象:只能适用终端设备（pc，服务器，打印机）的接口</a></li>
+        <li><a href="#3禁止对象交换机集线器或者网桥">3.禁止对象:交换机，集线器或者网桥</a>
+          <ol>
+            <li><a href="#如果你在二个交换机互联的链路上开启prtfast极大概率引起广播风暴">如果你在二个交换机互联的链路上开启Prtfast，极大概率引起广播风暴!!!</a></li>
           </ol>
         </li>
       </ol>
     </li>
+  </ol>
+
+  <ol>
+    <li><a href="#方式a接口配置针对特定接口">方式A：接口配置（针对特定接口）</a>
+      <ol>
+        <li><a href="#如下在交换机下">如下（在交换机下）</a></li>
+      </ol>
+    </li>
+    <li><a href="#方式b全局配置针对所有access端口">方式B：全局配置（针对所有Access端口）</a>
+      <ol>
+        <li><a href="#如下在交换机下-1">如下（在交换机下）</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#开启了portfast-之后如果有人不小心接上了一个交换机会导致广播风暴我们要配合bpdu-guard使用">开启了portfast 之后如果有人不小心接上了一个交换机会导致广播风暴，我们要配合BPDU Guard使用：</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#如下在交换机下-2">如下（在交换机下）</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#开启这个以后portfast-端口收到bpdu包他会立即进入err-disable状态直接把物理链路掐断">开启这个以后portfast 端口收到BPDU包他会立即进入err-disable状态，直接把物理链路掐断。</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li><a href="#优点解决dhcp超时问题提升用户体验">优点:解决DHCP超时问题，提升用户体验！</a></li>
+    <li><a href="#风险配置不当会导致物理环路">风险:配置不当会导致物理环路!</a></li>
+    <li><a href="#黄金法则终端开启互联禁止必须配合bpdu-guard">黄金法则：终端开启，互联禁止，必须配合BPDU Guard！</a></li>
   </ol>
 </nav>
         </div>
@@ -295,9 +314,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%BB%8F%E5%85%B8%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/">
+            <a href="/p/ccna-%E7%90%86%E8%AE%BAstp-prtfast%E5%B7%A5%E5%85%B7/">
                 
-                    <img src="https://plus.unsplash.com/premium_photo-1746101508295-1757c4df46f5?q=80&amp;w=1471&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" alt="Featured image of post CCNA理论知识『经典生成协议树』" />
+                    <img src="https://images.unsplash.com/photo-1599173704879-2e407aa34cde?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" alt="Featured image of post CCNA 理论：STP-Prtfast工具" />
                 
             </a>
         </div>
@@ -316,7 +335,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%BB%8F%E5%85%B8%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/">CCNA理论知识『经典生成协议树』</a>
+            <a href="/p/ccna-%E7%90%86%E8%AE%BAstp-prtfast%E5%B7%A5%E5%85%B7/">CCNA 理论：STP-Prtfast工具</a>
         </h2>
     
         
@@ -338,7 +357,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published" datetime='2026-01-21T15:51:37&#43;08:00'>Jan 21, 2026</time>
+                <time class="article-time--published" datetime='2026-01-26T20:59:51&#43;08:00'>Jan 26, 2026</time>
             </div>
         
 
@@ -368,61 +387,58 @@
     <section class="article-content">
     
     
-    <h1 id="stp经典生成协议树">STP『经典生成协议树』
-</h1><h1 id="1为什么需要stp环路的危害">1.为什么需要STP?『环路的危害』
-</h1><h2 id="当交换机之间存冗余链路时如果没有stp会产生以下灾难">当交换机之间存冗余链路时，如果没有STP：会产生以下灾难
-</h2><h4 id="1-广播风暴broadcast-storm广播帧在环路中无限循环直到淹没网络">1. 广播风暴『Broadcast Storm』:广播帧在环路中无限循环，直到淹没网络
-</h4><h4 id="2-mac地址漂移mac-address-flapping交换机不断从不同接口学习同一个mac地址导致mac表剧烈躁动">2. MAC地址漂移『MAC Address Flapping』:交换机不断从不同接口学习同一个MAC地址，导致MAC表剧烈躁动
-</h4><h1 id="2核心内容根桥root-bridge">2.核心内容根桥『Root Bridge』
-</h1><h1 id="stp网络中仅有一个根桥他是整个树状结构的根">STP网络中仅有一个根桥『他是整个树状结构的&quot;根&quot;』
-</h1><h2 id="选举规则拥有最低桥-id-lowst-bridge-id的交换机获胜">选举规则：拥有最低桥 ID 『Lowst BRidge ID』的交换机获胜
-</h2><h3 id="bridge-id-结构8字节">BRidge ID 结构『8字节』
-</h3><h4 id="1-bridge-priority4bits默认值32768-必须是4086的倍数">1. BRidge Priority『4bits』:默认值：32768 ：必须是4086的倍数
-</h4><h4 id="2extended-system-id12bits即vlan-id">2.Extended System ID『12bits』:即VLAN ID
-</h4><h4 id="3mac-address48bits当优先级相同时比mac地址大小">3.MAC Address『48bits』:当优先级相同时比MAC地址大小
-</h4><h1 id="3stp-端口角色与状态">3.STP 端口角色与状态
-</h1><h2 id="根端口root-portrp非根桥离根桥最近的端口每个非根桥只有一个">根端口『Root-Port&ndash;Rp』:非根桥离根桥最近的端口『每个非根桥只有一个』
-</h2><h2 id="状态forwarding转发">状态：Forwarding『转发』
-</h2><h2 id="指定端口designated-portdp每个网段中离根桥最近的端口">指定端口『Designated Port&ndash;DP』:每个网段中离根桥最近的端口
-</h2><h2 id="状态forwarding转发-1">状态：Forwarding『转发』
-</h2><p>注： 桥更上的所有物理端口都是 DP</p>
-<h2 id="非指定端口non-designated-port被逻辑阻塞的端口">非指定端口『Non-Designated Port』被逻辑阻塞的端口
-</h2><h2 id="状态blocking堵塞">状态：Blocking『堵塞』
-</h2><h1 id="4路径开销stp-cost">4.路径开销『STP Cost』
-</h1><h2 id="stp根据链路带宽计算cost带宽越高cost越小越优秀">STP根据链路带宽计算Cost:带宽越高Cost越小『越优秀』
-</h2><div class="table-wrapper"><table>
-  <thead>
-      <tr>
-          <th>链路速度</th>
-          <th>802.1D标准Cost</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>10Mbps</td>
-          <td>100</td>
-      </tr>
-      <tr>
-          <td>100Mbps</td>
-          <td>19</td>
-      </tr>
-      <tr>
-          <td>1Gbps</td>
-          <td>4</td>
-      </tr>
-      <tr>
-          <td>10Gbps</td>
-          <td>2</td>
-      </tr>
-  </tbody>
-</table></div>
-<h1 id="5选举四步走逻辑">5.选举&quot;四步走&quot;逻辑
-</h1><h2 id="当需要确定root-port-或者designated-port时按照以下顺序越小越好">当需要确定ROOT Port 或者Designated Port时按照以下顺序『越小越好』
-</h2><h4 id="1-lowest-root-path-cost--最低根路径开销">1. Lowest Root Path Cost  :最低根路径开销
-</h4><h4 id="2-lowest-sending-brdg-id-最低发送方交换机id">2. Lowest Sending Brdg Id :最低发送方交换机ID
-</h4><h4 id="3-lowest-sending-port-id-最低发送方端口id">3. Lowest Sending Port Id :最低发送方端口ID
-</h4><h1 id="总结stp生成树协议的核心目标是解决二层网络中的冗余链路导致的环路问题如广播风暴和-mac-地址漂移它通过选举出唯一的根桥基于最低桥-id并利用路径开销来确定各个交换机上离根桥最近的根端口和每个网段上的指定端口最终stp-会将冗余端口置于阻塞状态blocking从而逻辑上断开环路实现无环路拓扑">总结：STP（生成树协议）的核心目标是解决二层网络中的冗余链路导致的环路问题（如广播风暴和 MAC 地址漂移）它通过选举出唯一的根桥（基于最低桥 ID）并利用路径开销来确定各个交换机上离根桥最近的根端口和每个网段上的指定端口最终，STP 会将冗余端口置于阻塞状态（Blocking），从而逻辑上断开环路，实现无环路拓扑.
-</h1>
+    <h1 id="1为什么要用prtfast解决收敛延迟">1.为什么要用Prtfast？（解决收敛延迟）
+</h1><h1 id="在标准的生成树协议stp中从一个端口接入网要经历以下流程">在标准的生成树协议(STP)中从一个端口接入网要经历以下流程:
+</h1><h2 id="blocking堵塞-listening监听-learning学习-forwarding转发">Blocking(堵塞)-Listening(监听)-Learning(学习)-Forwarding(转发)
+</h2><h2 id="这个过程通常需要30秒">这个过程通常需要30秒
+</h2><h2 id="场景模拟">场景模拟:
+</h2><h4 id="如果你的一台pc连接到交换机pc启动很快网卡已经up了并开始dhcp请求但是交换机还在慢悠悠地进行stp计算处理监听状态结果就是dhcp超时网络连接失败30秒后才可以上网这对用户来说是灾难">如果你的一台PC连接到交换机，pc启动很快网卡已经UP了并开始DHCP请求，但是交换机还在慢悠悠地进行STP计算（处理监听状态）结果就是DHCP超时，网络连接失败30秒后才可以上网这对用户来说是灾难！
+</h4><h1 id="2prtfast底层逻辑">2.Prtfast底层逻辑
+</h1><h4 id="当你对一个接口使用prtfast后接口会跳过listening监听-learning学习阶段直接进入forwarding转发状态">当你对一个接口使用Prtfast后接口会跳过Listening(监听)-Learning(学习)阶段+直接进入Forwarding(转发)状态
+</h4><h3 id="1瞬间up端口几乎在物理链路连通之间的同时就能转发数据包">1.瞬间UP:端口几乎在物理链路连通之间的同时就能转发数据包。
+</h3><h3 id="2适用对象只能适用终端设备pc服务器打印机的接口">2.适用对象:只能适用终端设备（pc，服务器，打印机）的接口
+</h3><h3 id="3禁止对象交换机集线器或者网桥">3.禁止对象:交换机，集线器或者网桥
+</h3><h4 id="如果你在二个交换机互联的链路上开启prtfast极大概率引起广播风暴">如果你在二个交换机互联的链路上开启Prtfast，极大概率引起广播风暴!!!
+</h4><h1 id="3配置指令">3.配置指令
+</h1><h2 id="方式a接口配置针对特定接口">方式A：接口配置（针对特定接口）
+</h2><h3 id="如下在交换机下">如下（在交换机下）
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">interface G0/1
+</span></span><span class="line"><span class="cl">spanning-tree portfast
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="方式b全局配置针对所有access端口">方式B：全局配置（针对所有Access端口）
+</h2><h3 id="如下在交换机下-1">如下（在交换机下）
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spanning-tree portfast default
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="4进阶补丁bpdu-guard">4.进阶补丁:BPDU Guard
+</h1><h4 id="开启了portfast-之后如果有人不小心接上了一个交换机会导致广播风暴我们要配合bpdu-guard使用">开启了portfast 之后如果有人不小心接上了一个交换机会导致广播风暴，我们要配合BPDU Guard使用：
+</h4><h2 id="如下在交换机下-2">如下（在交换机下）
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spanning-tree bpduguard enable
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="开启这个以后portfast-端口收到bpdu包他会立即进入err-disable状态直接把物理链路掐断">开启这个以后portfast 端口收到BPDU包他会立即进入err-disable状态，直接把物理链路掐断。
+</h4><h1 id="总结">总结:
+</h1><h2 id="优点解决dhcp超时问题提升用户体验">优点:解决DHCP超时问题，提升用户体验！
+</h2><h2 id="风险配置不当会导致物理环路">风险:配置不当会导致物理环路!
+</h2><h2 id="黄金法则终端开启互联禁止必须配合bpdu-guard">黄金法则：终端开启，互联禁止，必须配合BPDU Guard！
+</h2>
 </section>
 
 
@@ -433,6 +449,8 @@
             <a href="/tags/ccna/">CCNA</a>
         
             <a href="/tags/%E7%90%86%E8%AE%BA/">理论</a>
+        
+            <a href="/tags/stp/">STP</a>
         
     </section>
 
@@ -466,25 +484,6 @@
             
                 
 <article class="has-image">
-    <a href="/p/ccna-%E7%90%86%E8%AE%BAstp-prtfast%E5%B7%A5%E5%85%B7/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="https://images.unsplash.com/photo-1599173704879-2e407aa34cde?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="" data-hash="https://images.unsplash.com/photo-1599173704879-2e407aa34cde?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">CCNA 理论：STP-Prtfast工具</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
     <a href="/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/">
         
         
@@ -497,6 +496,25 @@
 
         <div class="article-details">
             <h2 class="article-title">CCNA理论知识『快速生成协议树</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%BB%8F%E5%85%B8%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://plus.unsplash.com/premium_photo-1746101508295-1757c4df46f5?q=80&amp;w=1471&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="" data-hash="https://plus.unsplash.com/premium_photo-1746101508295-1757c4df46f5?q=80&amp;w=1471&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CCNA理论知识『经典生成协议树』</h2>
         </div>
     </a>
 </article>
