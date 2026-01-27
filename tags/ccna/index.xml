@@ -6,7 +6,7 @@
         <description>Recent content in CCNA on 伏太中文技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 26 Jan 2026 20:59:51 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/tags/ccna/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 27 Jan 2026 17:13:21 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/tags/ccna/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>CCNA命令大全『持续更新』</title>
         <link>https://RayFUTAI.github.ioc/p/ccna%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</link>
         <pubDate>Tue, 20 Jan 2026 21:03:08 +0800</pubDate>
@@ -228,6 +228,136 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h1 id=&#34;三层交换机layer-3-switch&#34;&gt;三层交换机（Layer 3 Switch）
 &lt;/h1&gt;&lt;h2 id=&#34;持续更新中&#34;&gt;持续更新中&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..
+&lt;/h2&gt;</description>
+        </item>
+        <item>
+        <title>CCNA 理论：STP-BPDU工具</title>
+        <link>https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAstp-bpdu%E5%B7%A5%E5%85%B7/</link>
+        <pubDate>Tue, 27 Jan 2026 17:13:21 +0800</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAstp-bpdu%E5%B7%A5%E5%85%B7/</guid>
+        <description>&lt;img src="https://images.unsplash.com/photo-1560640507-a9e7a39b38f0?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Featured image of post CCNA 理论：STP-BPDU工具" /&gt;&lt;h1 id=&#34;1什么是bpud&#34;&gt;1.什么是BPUD？
+&lt;/h1&gt;&lt;h3 id=&#34;bpdu就像是交换机之间的心跳包和身份牌&#34;&gt;BPDU就像是交换机之间的心跳包和身份牌:
+&lt;/h3&gt;&lt;h4 id=&#34;打招呼嘿我是switch-a我的mac地址是xxx我的优先级是32768&#34;&gt;打招呼:嘿~我是switch A，我的mac地址是XXX我的优先级是32768.
+&lt;/h4&gt;&lt;h4 id=&#34;选老大交换机们通过交换bpdu比一比谁的bridge-id-最小选出根桥&#34;&gt;选老大:交换机们通过交换BPDU，比一比谁的Bridge id 最小，选出根桥.
+&lt;/h4&gt;&lt;h4 id=&#34;选完老大大家决定谁关掉哪个接口从而把圈拆成一颗树这就是stp&#34;&gt;选完老大，大家决定谁关掉哪个接口，从而把圈拆成一颗树，这就是STP.
+&lt;/h4&gt;&lt;h1 id=&#34;2bpud的二大类型&#34;&gt;2.BPUD的二大类型：
+&lt;/h1&gt;&lt;h2 id=&#34;1configuration-bpdu配置bpdu&#34;&gt;1.Configuration BPDU（配置BPDU）
+&lt;/h2&gt;&lt;h4 id=&#34;谁发的只有老大根桥才有资格发&#34;&gt;谁发的？只有老大（根桥）才有资格发.
+&lt;/h4&gt;&lt;h4 id=&#34;干嘛用定期默认每2秒一次巡逻告诉大家我还在大家不要乱动保持当前结构&#34;&gt;干嘛用?定期（默认每2秒一次）巡逻，告诉大家我还在大家不要乱动保持当前结构!
+&lt;/h4&gt;&lt;h2 id=&#34;2tcn-bpdu更变通知&#34;&gt;2.TCN BPDU(更变通知)
+&lt;/h2&gt;&lt;h4 id=&#34;谁发的当某个交换机发现有个接口断了结构变了&#34;&gt;谁发的？当某个交换机发现有个接口断了（结构变了）.
+&lt;/h4&gt;&lt;h4 id=&#34;干嘛用报告老大我这边接口挂了快更新大家的路径信息&#34;&gt;干嘛用?报告老大！我这边接口挂了，快更新大家的路径信息！
+&lt;/h4&gt;&lt;h1 id=&#34;3bpud-guardbpdu守护&#34;&gt;3.BPUD Guard(BPDU守护)
+&lt;/h1&gt;&lt;h3 id=&#34;定位暴力执法者一旦触发立刻查封&#34;&gt;定位：暴力执法者（一旦触发，立刻查封）
+&lt;/h3&gt;&lt;h4 id=&#34;他的逻辑这个端口应该只连接电脑终端不该有交换机如果你敢在这个接口给我发bpdu包说明你私自接了交换机或者在搞攻击&#34;&gt;他的逻辑：这个端口应该只连接电脑(终端)不该有交换机.如果你敢在这个接口给我发BPDU包，说明你私自接了交换机或者在搞攻击.
+&lt;/h4&gt;&lt;h4 id=&#34;动作一旦收到bpdu端口立即进入err-disable状态彻底断电熄灯&#34;&gt;动作:一旦收到BPDU，端口立即进入err-disable状态(彻底断电熄灯).
+&lt;/h4&gt;&lt;h4 id=&#34;恢复必须网工手动敲shutdown再-no-shutdown或者配置自动恢复30秒&#34;&gt;恢复:必须网工手动敲&amp;quot;shutdown&amp;quot;再 &amp;ldquo;no shutdown&amp;rdquo;,或者配置自动恢复30秒.
+&lt;/h4&gt;&lt;h4 id=&#34;1手动重启笨方法&#34;&gt;1.手动重启(笨方法)
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#no shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;2自动恢复高级办法&#34;&gt;2.自动恢复（高级办法）
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#errdisable recovery cause bpduguard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#errdisable recovery interval 30
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;4bpud-guard配置指令&#34;&gt;4.BPUD Guard配置指令
+&lt;/h1&gt;&lt;h3 id=&#34;核心逻辑只要收到bpdu立即断开&#34;&gt;核心逻辑：只要收到BPDU,立即断开
+&lt;/h3&gt;&lt;h2 id=&#34;方式a接口配置最稳-最常用&#34;&gt;方式A：接口配置（最稳-最常用）
+&lt;/h2&gt;&lt;h3 id=&#34;如下&#34;&gt;如下：
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#int G0/1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#spanning-tree portfast #必须开启portfast
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#spanning-tree bpduguard enable #开启防卫
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;方式b全局级配置&#34;&gt;方式B：全局级配置
+&lt;/h2&gt;&lt;h3 id=&#34;如下-1&#34;&gt;如下：
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#spanning-tree portfast edge bpdugard default
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;5bpdu-filterbpdu过滤&#34;&gt;5.BPDU Filter(BPDU过滤)
+&lt;/h1&gt;&lt;h3 id=&#34;定位冷漠无视者不听也不发假装不存在&#34;&gt;定位：冷漠无视者（不听也不发，假装不存在）
+&lt;/h3&gt;&lt;h4 id=&#34;它的逻辑不管收到什么-bpdu我都直接丢弃不处理也不因此关闭端口同时我也不向外发送-bpdu&#34;&gt;它的逻辑：不管收到什么 BPDU，我都直接丢弃，不处理，也不因此关闭端口。同时，我也不向外发送 BPDU.
+&lt;/h4&gt;&lt;h4 id=&#34;动作让这个端口在生成树stp的世界里变成隐形人&#34;&gt;​动作：让这个端口在生成树（STP）的世界里变成隐形人.
+&lt;/h4&gt;&lt;h4 id=&#34;风险极度危险-如果你把两台交换机连在一起还开了-filter它们互相看不见bpdu-传不过去100-会产生环路瞬间让你的交换机爆表&#34;&gt;​风险：极度危险！ 如果你把两台交换机连在一起，还开了 Filter，它们互相看不见，BPDU 传不过去，100% 会产生环路，瞬间让你的交换机爆表.
+&lt;/h4&gt;&lt;h4 id=&#34;适用场景极少数特殊需求比如连接两个不同的管理域或者非常确定的非环路环境&#34;&gt;适用场景：极少数特殊需求，比如连接两个不同的管理域，或者非常确定的非环路环境。
+&lt;/h4&gt;&lt;h1 id=&#34;6bpud-filter配置指令&#34;&gt;6.BPUD Filter配置指令
+&lt;/h1&gt;&lt;h3 id=&#34;核心逻辑我不发bpdu收到也当没看见&#34;&gt;核心逻辑：我不发BPDU,收到也当没看见
+&lt;/h3&gt;&lt;h2 id=&#34;方式a接口配置危险-慎用&#34;&gt;方式A：接口配置（危险-慎用）
+&lt;/h2&gt;&lt;h3 id=&#34;如下-2&#34;&gt;如下：
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#int G0/1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#spanning-tree bpdufilter enable 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;方式b全局级配置相对智能&#34;&gt;方式B：全局级配置(相对智能)
+&lt;/h2&gt;&lt;h3 id=&#34;如下-3&#34;&gt;如下：
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#spanning-tree portfast edge budufilter default
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;注全局配置的-filter-有个保命机制如果它收到-bpdu它会自动关掉-filter-功能变回普通的-stp-端口这比接口级配置要安全得多&#34;&gt;注：全局配置的 Filter 有个&amp;quot;保命机制&amp;quot;：如果它收到 BPDU，它会自动关掉 Filter 功能，变回普通的 STP 端口.这比接口级配置要安全得多！
+&lt;/h4&gt;&lt;h2 id=&#34;恢复&#34;&gt;恢复
+&lt;/h2&gt;&lt;h4 id=&#34;1手动重启笨方法-1&#34;&gt;1.手动重启(笨方法)
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#no shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;2自动恢复高级办法-1&#34;&gt;2.自动恢复（高级办法）
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#errdisable recovery cause bpduguard
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#errdisable recovery interval 30
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;7总结&#34;&gt;7.总结：
+&lt;/h1&gt;&lt;h2 id=&#34;guard是用来抓贼的抓到就关门&#34;&gt;Guard是用来抓贼的（抓到就关门）
+&lt;/h2&gt;&lt;h2 id=&#34;filter是用来隐身的假装听不见&#34;&gt;Filter是用来隐身的（假装听不见）
 &lt;/h2&gt;</description>
         </item>
         <item>
