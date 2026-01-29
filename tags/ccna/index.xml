@@ -236,7 +236,7 @@
         <pubDate>Thu, 29 Jan 2026 20:56:49 +0800</pubDate>
         
         <guid>https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAstp-root-guard%E5%B7%A5%E5%85%B7/</guid>
-        <description>&lt;img src="https://images.unsplash.com/photo-1590796583326-afd3bb20d22d?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFuaW1lfGVufDB8fDB8fHww" alt="Featured image of post CCNA 理论：STP-Root Guard工具" /&gt;&lt;h1 id=&#34;1什么是root-guard&#34;&gt;1.什么是Root Guard？
+        <description>&lt;img src="https://images.unsplash.com/photo-1758964112991-84be3393d9b1?q=80&amp;w=1471&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Featured image of post CCNA 理论：STP-Root Guard工具" /&gt;&lt;h1 id=&#34;1什么是root-guard&#34;&gt;1.什么是Root Guard？
 &lt;/h1&gt;&lt;h3 id=&#34;他的核心逻辑无论发生什么我不允许新的邻居抢走根桥root-bridge老大的位置&#34;&gt;他的核心逻辑：无论发生什么，我不允许新的邻居抢走&amp;quot;根桥&amp;quot;（Root Bridge）老大的位置.
 &lt;/h3&gt;&lt;h4 id=&#34;他的作用他会监视端口接收到的bpdu&#34;&gt;他的作用:他会监视端口接收到的BPDU.
 &lt;/h4&gt;&lt;h4 id=&#34;他的动作如果接受到了一个比当前老大根桥更低的superior-bpduroot-guard会认为有人想要篡改立刻将该端口置于root-inconsistent根不一致状态&#34;&gt;他的动作：如果接受到了一个比当前老大（根桥）更低的Superior BPDU，Root Guard会认为有人想要篡改，立刻将该端口置于root-inconsistent(根不一致)状态.
