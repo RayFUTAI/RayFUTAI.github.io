@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="">
-<title>CCNA理论知识『快速生成协议树</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1.什么是Root Guard？ 他的核心逻辑：无论发生什么，我不允许新的邻居抢走&quot;根桥&quot;（Root Bridge）老大的位置. 他的作用:他会监视端口接收到的BPDU. 他的动作：如果接受到了一个比当前老大（根桥）更低的Superior BPDU，Root Guard会认为有人想要篡改，立刻将该端口置于root-inconsistent(根不一致)状态. 状态表现:这个接口会停止接收数据，效果类似断开(Blocking)直到那个想抢位置的Superior BPDU消失为止. 2.配置命令: 是Root Guard必须在接口模式下开启.他通常部署在那些连着你不信任的交换机端口上(比如连接客户网络或者接入层交换机的下行口)。 命令（接口模式下） 1 2 Switch(config)#int G0/1 Switch(config-if)spanning-tree guard root 3.输入命令查看： 1 2 Switch#show spanning tree int G0/1 # 你会看见状态显示为：BKM(Broken)会标记为Root inc 注意！！！ 千万不能在你的root port(连接上层核心的口)上开Root Guard!否则你会把真正的大佬也拒之门外，导致全网中断！！！。 ">
+<title>CCNA 理论：STP-Root Guard工具</title>
 
-<link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/'>
+<link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAstp-root-guard%E5%B7%A5%E5%85%B7/'>
 
-<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA理论知识『快速生成协议树">
-<meta property='og:description' content="">
-<meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/'>
+<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA 理论：STP-Root Guard工具">
+<meta property='og:description' content="1.什么是Root Guard？ 他的核心逻辑：无论发生什么，我不允许新的邻居抢走&quot;根桥&quot;（Root Bridge）老大的位置. 他的作用:他会监视端口接收到的BPDU. 他的动作：如果接受到了一个比当前老大（根桥）更低的Superior BPDU，Root Guard会认为有人想要篡改，立刻将该端口置于root-inconsistent(根不一致)状态. 状态表现:这个接口会停止接收数据，效果类似断开(Blocking)直到那个想抢位置的Superior BPDU消失为止. 2.配置命令: 是Root Guard必须在接口模式下开启.他通常部署在那些连着你不信任的交换机端口上(比如连接客户网络或者接入层交换机的下行口)。 命令（接口模式下） 1 2 Switch(config)#int G0/1 Switch(config-if)spanning-tree guard root 3.输入命令查看： 1 2 Switch#show spanning tree int G0/1 # 你会看见状态显示为：BKM(Broken)会标记为Root inc 注意！！！ 千万不能在你的root port(连接上层核心的口)上开Root Guard!否则你会把真正的大佬也拒之门外，导致全网中断！！！。 ">
+<meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAstp-root-guard%E5%B7%A5%E5%85%B7/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='理论' /><meta property='article:published_time' content='2026-01-23T14:33:21&#43;08:00'/><meta property='article:modified_time' content='2026-01-23T14:33:21&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1557409518-691ebcd96038?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
-<meta name="twitter:title" content="CCNA理论知识『快速生成协议树">
-<meta name="twitter:description" content=""><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://images.unsplash.com/photo-1557409518-691ebcd96038?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='理论' /><meta property='article:tag' content='STP' /><meta property='article:published_time' content='2026-01-29T20:56:49&#43;08:00'/><meta property='article:modified_time' content='2026-01-29T20:56:49&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1590796583326-afd3bb20d22d?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFuaW1lfGVufDB8fDB8fHww' />
+<meta name="twitter:title" content="CCNA 理论：STP-Root Guard工具">
+<meta name="twitter:description" content="1.什么是Root Guard？ 他的核心逻辑：无论发生什么，我不允许新的邻居抢走&quot;根桥&quot;（Root Bridge）老大的位置. 他的作用:他会监视端口接收到的BPDU. 他的动作：如果接受到了一个比当前老大（根桥）更低的Superior BPDU，Root Guard会认为有人想要篡改，立刻将该端口置于root-inconsistent(根不一致)状态. 状态表现:这个接口会停止接收数据，效果类似断开(Blocking)直到那个想抢位置的Superior BPDU消失为止. 2.配置命令: 是Root Guard必须在接口模式下开启.他通常部署在那些连着你不信任的交换机端口上(比如连接客户网络或者接入层交换机的下行口)。 命令（接口模式下） 1 2 Switch(config)#int G0/1 Switch(config-if)spanning-tree guard root 3.输入命令查看： 1 2 Switch#show spanning tree int G0/1 # 你会看见状态显示为：BKM(Broken)会标记为Root inc 注意！！！ 千万不能在你的root port(连接上层核心的口)上开Root Guard!否则你会把真正的大佬也拒之门外，导致全网中断！！！。 "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://images.unsplash.com/photo-1590796583326-afd3bb20d22d?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFuaW1lfGVufDB8fDB8fHww' />
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -208,15 +208,73 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#他的核心逻辑无论发生什么我不允许新的邻居抢走根桥root-bridge老大的位置">他的核心逻辑：无论发生什么，我不允许新的邻居抢走&quot;根桥&quot;（Root Bridge）老大的位置.</a>
+          <ol>
+            <li><a href="#他的作用他会监视端口接收到的bpdu">他的作用:他会监视端口接收到的BPDU.</a></li>
+            <li><a href="#他的动作如果接受到了一个比当前老大根桥更低的superior-bpduroot-guard会认为有人想要篡改立刻将该端口置于root-inconsistent根不一致状态">他的动作：如果接受到了一个比当前老大（根桥）更低的Superior BPDU，Root Guard会认为有人想要篡改，立刻将该端口置于root-inconsistent(根不一致)状态.</a></li>
+            <li><a href="#状态表现这个接口会停止接收数据效果类似断开blocking直到那个想抢位置的superior-bpdu消失为止">状态表现:这个接口会停止接收数据，效果类似断开(Blocking)直到那个想抢位置的Superior BPDU消失为止.</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#是root-guard必须在接口模式下开启他通常部署在那些连着你不信任的交换机端口上比如连接客户网络或者接入层交换机的下行口">是Root Guard必须在接口模式下开启.他通常部署在那些连着你不信任的交换机端口上(比如连接客户网络或者接入层交换机的下行口)。</a></li>
+      </ol>
+    </li>
+    <li><a href="#命令接口模式下">命令（接口模式下）</a></li>
+  </ol>
+
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#千万不能在你的root-port连接上层核心的口上开root-guard否则你会把真正的大佬也拒之门外导致全网中断">千万不能在你的root port(连接上层核心的口)上开Root Guard!否则你会把真正的大佬也拒之门外，导致全网中断！！！。</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/">
+            <a href="/p/ccna-%E7%90%86%E8%AE%BAstp-root-guard%E5%B7%A5%E5%85%B7/">
                 
-                    <img src="https://images.unsplash.com/photo-1557409518-691ebcd96038?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" alt="Featured image of post CCNA理论知识『快速生成协议树" />
+                    <img src="https://images.unsplash.com/photo-1590796583326-afd3bb20d22d?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFuaW1lfGVufDB8fDB8fHww" loading="lazy" alt="Featured image of post CCNA 理论：STP-Root Guard工具" />
                 
             </a>
         </div>
@@ -235,7 +293,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/">CCNA理论知识『快速生成协议树</a>
+            <a href="/p/ccna-%E7%90%86%E8%AE%BAstp-root-guard%E5%B7%A5%E5%85%B7/">CCNA 理论：STP-Root Guard工具</a>
         </h2>
     
         
@@ -257,7 +315,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published" datetime='2026-01-23T14:33:21&#43;08:00'>Jan 23, 2026</time>
+                <time class="article-time--published" datetime='2026-01-29T20:56:49&#43;08:00'>Jan 29, 2026</time>
             </div>
         
 
@@ -272,7 +330,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 0 分钟
+                    阅读时长: 1 分钟
                 </time>
             </div>
         
@@ -287,7 +345,38 @@
     <section class="article-content">
     
     
-    
+    <h1 id="1什么是root-guard">1.什么是Root Guard？
+</h1><h3 id="他的核心逻辑无论发生什么我不允许新的邻居抢走根桥root-bridge老大的位置">他的核心逻辑：无论发生什么，我不允许新的邻居抢走&quot;根桥&quot;（Root Bridge）老大的位置.
+</h3><h4 id="他的作用他会监视端口接收到的bpdu">他的作用:他会监视端口接收到的BPDU.
+</h4><h4 id="他的动作如果接受到了一个比当前老大根桥更低的superior-bpduroot-guard会认为有人想要篡改立刻将该端口置于root-inconsistent根不一致状态">他的动作：如果接受到了一个比当前老大（根桥）更低的Superior BPDU，Root Guard会认为有人想要篡改，立刻将该端口置于root-inconsistent(根不一致)状态.
+</h4><h4 id="状态表现这个接口会停止接收数据效果类似断开blocking直到那个想抢位置的superior-bpdu消失为止">状态表现:这个接口会停止接收数据，效果类似断开(Blocking)直到那个想抢位置的Superior BPDU消失为止.
+</h4><h1 id="2配置命令">2.配置命令:
+</h1><h3 id="是root-guard必须在接口模式下开启他通常部署在那些连着你不信任的交换机端口上比如连接客户网络或者接入层交换机的下行口">是Root Guard必须在接口模式下开启.他通常部署在那些连着你不信任的交换机端口上(比如连接客户网络或者接入层交换机的下行口)。
+</h3><h2 id="命令接口模式下">命令（接口模式下）
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#int G0/1
+</span></span><span class="line"><span class="cl">Switch(config-if)spanning-tree guard root
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="3输入命令查看">3.输入命令查看：
+</h1><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch#show spanning tree int G0/1
+</span></span><span class="line"><span class="cl"># 你会看见状态显示为：BKM(Broken)会标记为Root inc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="注意">注意！！！
+</h1><h3 id="千万不能在你的root-port连接上层核心的口上开root-guard否则你会把真正的大佬也拒之门外导致全网中断">千万不能在你的root port(连接上层核心的口)上开Root Guard!否则你会把真正的大佬也拒之门外，导致全网中断！！！。
+</h3>
 </section>
 
 
@@ -298,6 +387,8 @@
             <a href="/tags/ccna/">CCNA</a>
         
             <a href="/tags/%E7%90%86%E8%AE%BA/">理论</a>
+        
+            <a href="/tags/stp/">STP</a>
         
     </section>
 
@@ -328,25 +419,6 @@
     <h2 class="section-title">相关文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/ccna-%E7%90%86%E8%AE%BAstp-root-guard%E5%B7%A5%E5%85%B7/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="https://images.unsplash.com/photo-1590796583326-afd3bb20d22d?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFuaW1lfGVufDB8fDB8fHww" loading="lazy" data-key="" data-hash="https://images.unsplash.com/photo-1590796583326-afd3bb20d22d?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFuaW1lfGVufDB8fDB8fHww"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">CCNA 理论：STP-Root Guard工具</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="has-image">
@@ -381,6 +453,25 @@
 
         <div class="article-details">
             <h2 class="article-title">CCNA 理论：STP-Prtfast工具</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ccna%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E5%8D%8F%E8%AE%AE%E6%A0%91/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1557409518-691ebcd96038?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="" data-hash="https://images.unsplash.com/photo-1557409518-691ebcd96038?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CCNA理论知识『快速生成协议树</h2>
         </div>
     </a>
 </article>
