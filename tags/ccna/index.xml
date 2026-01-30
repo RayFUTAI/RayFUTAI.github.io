@@ -6,7 +6,7 @@
         <description>Recent content in CCNA on 伏太中文技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Thu, 29 Jan 2026 20:56:49 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/tags/ccna/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 30 Jan 2026 20:30:12 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/tags/ccna/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>CCNA命令大全『持续更新』</title>
         <link>https://RayFUTAI.github.ioc/p/ccna%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</link>
         <pubDate>Tue, 20 Jan 2026 21:03:08 +0800</pubDate>
@@ -229,6 +229,45 @@
 &lt;/div&gt;&lt;h1 id=&#34;三层交换机layer-3-switch&#34;&gt;三层交换机（Layer 3 Switch）
 &lt;/h1&gt;&lt;h2 id=&#34;持续更新中&#34;&gt;持续更新中&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..
 &lt;/h2&gt;</description>
+        </item>
+        <item>
+        <title>CCNA 理论：Loop Guard工具</title>
+        <link>https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAloop-guard%E5%B7%A5%E5%85%B7/</link>
+        <pubDate>Fri, 30 Jan 2026 20:30:12 +0800</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAloop-guard%E5%B7%A5%E5%85%B7/</guid>
+        <description>&lt;img src="https://images.unsplash.com/photo-1613487957484-32c977a8bd62?q=80&amp;w=2069&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Featured image of post CCNA 理论：Loop Guard工具" /&gt;&lt;h1 id=&#34;1为什么需要loop-guard-&#34;&gt;1.为什么需要Loop Guard ?
+&lt;/h1&gt;&lt;h3 id=&#34;在stp的逻辑里交换机靠接收bpdu来确认链路正常如果一个端口突然收不到bpdu了他会怎么想&#34;&gt;在stp的逻辑里，交换机靠接收BPDU来确认链路正常.如果一个端口突然收不到BPDU了，他会怎么想？
+&lt;/h3&gt;&lt;h4 id=&#34;他认为对面没有交换机了或者链路断了&#34;&gt;他认为：对面没有交换机了，或者链路断了.
+&lt;/h4&gt;&lt;h4 id=&#34;他的动作他会把自己从blocking堵塞状态切换到forwarding转发状态&#34;&gt;他的动作：他会把自己从blocking(堵塞)状态切换到Forwarding(转发)状态.
+&lt;/h4&gt;&lt;h4 id=&#34;结果如果实际上链路没断只是因为光纤单向故障cpu过载等原因导致bpdu丢了瞬间就会产生物理环路全网瘫痪&#34;&gt;结果:如果实际上链路没断，只是因为光纤单向故障，cpu过载等原因导致BPDU丢了，瞬间就会产生物理环路，全网瘫痪.
+&lt;/h4&gt;&lt;h4 id=&#34;loop-guard的作用当一个本来因该接收bpdu的端口突然失联loop-guardd不允许他进入转发状态而是把他切入到loop-inconsistent环路不一致状态直到重新接收到bpdu为止&#34;&gt;Loop Guard的作用：当一个本来因该接收BPDU的端口突然&amp;quot;失联&amp;quot;Loop Guardd不允许他进入转发状态，而是把他切入到loop-inconsistent(环路不一致)状态，直到重新接收到BPDU为止.
+&lt;/h4&gt;&lt;h1 id=&#34;配置指令&#34;&gt;配置指令
+&lt;/h1&gt;&lt;h3 id=&#34;loop-guardd可以在全局模式开启推荐也可以在接口模式下开启&#34;&gt;Loop Guardd可以在全局模式开启（推荐）也可以在接口模式下开启。
+&lt;/h3&gt;&lt;h4 id=&#34;全局模式最省事&#34;&gt;全局模式（最省事）
+&lt;/h4&gt;&lt;h5 id=&#34;他会自动应用在对点链路full-duplex上&#34;&gt;他会自动应用在对点链路（FUll-Duplex）上:
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#spanning-tree loopguard default
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;接口模式更精确&#34;&gt;接口模式（更精确）
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#int G0/1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)spanning-tree guard loop
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;注意&#34;&gt;注意！！！
+&lt;/h1&gt;&lt;h3 id=&#34;root-guard和loop-guard是死对头因为他们逻辑冲突一个接口只能同时选择一个通常上连口root-port开loop-guard下连口designated-port开root-guard&#34;&gt;Root Guard和Loop Guard是死对头，因为他们逻辑冲突，一个接口只能同时选择一个.通常:上连口(Root Port)开Loop Guard，下连口(Designated Port)开Root Guard.
+&lt;/h3&gt;</description>
         </item>
         <item>
         <title>CCNA 理论：STP-Root Guard工具</title>

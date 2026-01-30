@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1.为什么要用Prtfast？（解决收敛延迟） 在标准的生成树协议(STP)中从一个端口接入网要经历以下流程: Blocking(堵塞)-Listening(监听)-Learning(学习)-Forwarding(转发) 这个过程通常需要30秒 场景模拟: 如果你的一台PC连接到交换机，pc启动很快网卡已经UP了并开始DHCP请求，但是交换机还在慢悠悠地进行STP计算（处理监听状态）结果就是DHCP超时，网络连接失败30秒后才可以上网这对用户来说是灾难！ 2.Prtfast底层逻辑 当你对一个接口使用Prtfast后接口会跳过Listening(监听)-Learning(学习)阶段+直接进入Forwarding(转发)状态 1.瞬间UP:端口几乎在物理链路连通之间的同时就能转发数据包。 2.适用对象:只能适用终端设备（pc，服务器，打印机）的接口 3.禁止对象:交换机，集线器或者网桥 如果你在二个交换机互联的链路上开启Prtfast，极大概率引起广播风暴!!! 3.配置指令 方式A：接口配置（针对特定接口） 如下（在交换机下） 1 2 interface G0/1 spanning-tree portfast 方式B：全局配置（针对所有Access端口） 如下（在交换机下） 1 spanning-tree portfast default 4.进阶补丁:BPDU Guard 开启了portfast 之后如果有人不小心接上了一个交换机会导致广播风暴，我们要配合BPDU Guard使用： 如下（在交换机下） 1 spanning-tree bpduguard enable 开启这个以后portfast 端口收到BPDU包他会立即进入err-disable状态，直接把物理链路掐断。 总结: 优点:解决DHCP超时问题，提升用户体验！ 风险:配置不当会导致物理环路! 黄金法则：终端开启，互联禁止，必须配合BPDU Guard！ ">
-<title>CCNA 理论：STP-Prtfast工具</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="1.为什么需要Loop Guard ? 在stp的逻辑里，交换机靠接收BPDU来确认链路正常.如果一个端口突然收不到BPDU了，他会怎么想？ 他认为：对面没有交换机了，或者链路断了. 他的动作：他会把自己从blocking(堵塞)状态切换到Forwarding(转发)状态. 结果:如果实际上链路没断，只是因为光纤单向故障，cpu过载等原因导致BPDU丢了，瞬间就会产生物理环路，全网瘫痪. Loop Guard的作用：当一个本来因该接收BPDU的端口突然&quot;失联&quot;Loop Guardd不允许他进入转发状态，而是把他切入到loop-inconsistent(环路不一致)状态，直到重新接收到BPDU为止. 配置指令 Loop Guardd可以在全局模式开启（推荐）也可以在接口模式下开启。 全局模式（最省事） 他会自动应用在对点链路（FUll-Duplex）上: 1 Switch(config)#spanning-tree loopguard default 接口模式（更精确） 1 2 Switch(config)#int G0/1 Switch(config-if)spanning-tree guard loop 注意！！！ Root Guard和Loop Guard是死对头，因为他们逻辑冲突，一个接口只能同时选择一个.通常:上连口(Root Port)开Loop Guard，下连口(Designated Port)开Root Guard. ">
+<title>CCNA 理论：Loop Guard工具</title>
 
-<link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAstp-prtfast%E5%B7%A5%E5%85%B7/'>
+<link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAloop-guard%E5%B7%A5%E5%85%B7/'>
 
-<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA 理论：STP-Prtfast工具">
-<meta property='og:description' content="1.为什么要用Prtfast？（解决收敛延迟） 在标准的生成树协议(STP)中从一个端口接入网要经历以下流程: Blocking(堵塞)-Listening(监听)-Learning(学习)-Forwarding(转发) 这个过程通常需要30秒 场景模拟: 如果你的一台PC连接到交换机，pc启动很快网卡已经UP了并开始DHCP请求，但是交换机还在慢悠悠地进行STP计算（处理监听状态）结果就是DHCP超时，网络连接失败30秒后才可以上网这对用户来说是灾难！ 2.Prtfast底层逻辑 当你对一个接口使用Prtfast后接口会跳过Listening(监听)-Learning(学习)阶段+直接进入Forwarding(转发)状态 1.瞬间UP:端口几乎在物理链路连通之间的同时就能转发数据包。 2.适用对象:只能适用终端设备（pc，服务器，打印机）的接口 3.禁止对象:交换机，集线器或者网桥 如果你在二个交换机互联的链路上开启Prtfast，极大概率引起广播风暴!!! 3.配置指令 方式A：接口配置（针对特定接口） 如下（在交换机下） 1 2 interface G0/1 spanning-tree portfast 方式B：全局配置（针对所有Access端口） 如下（在交换机下） 1 spanning-tree portfast default 4.进阶补丁:BPDU Guard 开启了portfast 之后如果有人不小心接上了一个交换机会导致广播风暴，我们要配合BPDU Guard使用： 如下（在交换机下） 1 spanning-tree bpduguard enable 开启这个以后portfast 端口收到BPDU包他会立即进入err-disable状态，直接把物理链路掐断。 总结: 优点:解决DHCP超时问题，提升用户体验！ 风险:配置不当会导致物理环路! 黄金法则：终端开启，互联禁止，必须配合BPDU Guard！ ">
-<meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAstp-prtfast%E5%B7%A5%E5%85%B7/'>
+<link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA 理论：Loop Guard工具">
+<meta property='og:description' content="1.为什么需要Loop Guard ? 在stp的逻辑里，交换机靠接收BPDU来确认链路正常.如果一个端口突然收不到BPDU了，他会怎么想？ 他认为：对面没有交换机了，或者链路断了. 他的动作：他会把自己从blocking(堵塞)状态切换到Forwarding(转发)状态. 结果:如果实际上链路没断，只是因为光纤单向故障，cpu过载等原因导致BPDU丢了，瞬间就会产生物理环路，全网瘫痪. Loop Guard的作用：当一个本来因该接收BPDU的端口突然&quot;失联&quot;Loop Guardd不允许他进入转发状态，而是把他切入到loop-inconsistent(环路不一致)状态，直到重新接收到BPDU为止. 配置指令 Loop Guardd可以在全局模式开启（推荐）也可以在接口模式下开启。 全局模式（最省事） 他会自动应用在对点链路（FUll-Duplex）上: 1 Switch(config)#spanning-tree loopguard default 接口模式（更精确） 1 2 Switch(config)#int G0/1 Switch(config-if)spanning-tree guard loop 注意！！！ Root Guard和Loop Guard是死对头，因为他们逻辑冲突，一个接口只能同时选择一个.通常:上连口(Root Port)开Loop Guard，下连口(Designated Port)开Root Guard. ">
+<meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E7%90%86%E8%AE%BAloop-guard%E5%B7%A5%E5%85%B7/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='理论' /><meta property='article:tag' content='STP' /><meta property='article:published_time' content='2026-01-26T20:59:51&#43;08:00'/><meta property='article:modified_time' content='2026-01-26T20:59:51&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1599173704879-2e407aa34cde?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
-<meta name="twitter:title" content="CCNA 理论：STP-Prtfast工具">
-<meta name="twitter:description" content="1.为什么要用Prtfast？（解决收敛延迟） 在标准的生成树协议(STP)中从一个端口接入网要经历以下流程: Blocking(堵塞)-Listening(监听)-Learning(学习)-Forwarding(转发) 这个过程通常需要30秒 场景模拟: 如果你的一台PC连接到交换机，pc启动很快网卡已经UP了并开始DHCP请求，但是交换机还在慢悠悠地进行STP计算（处理监听状态）结果就是DHCP超时，网络连接失败30秒后才可以上网这对用户来说是灾难！ 2.Prtfast底层逻辑 当你对一个接口使用Prtfast后接口会跳过Listening(监听)-Learning(学习)阶段+直接进入Forwarding(转发)状态 1.瞬间UP:端口几乎在物理链路连通之间的同时就能转发数据包。 2.适用对象:只能适用终端设备（pc，服务器，打印机）的接口 3.禁止对象:交换机，集线器或者网桥 如果你在二个交换机互联的链路上开启Prtfast，极大概率引起广播风暴!!! 3.配置指令 方式A：接口配置（针对特定接口） 如下（在交换机下） 1 2 interface G0/1 spanning-tree portfast 方式B：全局配置（针对所有Access端口） 如下（在交换机下） 1 spanning-tree portfast default 4.进阶补丁:BPDU Guard 开启了portfast 之后如果有人不小心接上了一个交换机会导致广播风暴，我们要配合BPDU Guard使用： 如下（在交换机下） 1 spanning-tree bpduguard enable 开启这个以后portfast 端口收到BPDU包他会立即进入err-disable状态，直接把物理链路掐断。 总结: 优点:解决DHCP超时问题，提升用户体验！ 风险:配置不当会导致物理环路! 黄金法则：终端开启，互联禁止，必须配合BPDU Guard！ "><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://images.unsplash.com/photo-1599173704879-2e407aa34cde?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='理论' /><meta property='article:tag' content='STP' /><meta property='article:published_time' content='2026-01-30T20:30:12&#43;08:00'/><meta property='article:modified_time' content='2026-01-30T20:30:12&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1613487957484-32c977a8bd62?q=80&amp;w=2069&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+<meta name="twitter:title" content="CCNA 理论：Loop Guard工具">
+<meta name="twitter:description" content="1.为什么需要Loop Guard ? 在stp的逻辑里，交换机靠接收BPDU来确认链路正常.如果一个端口突然收不到BPDU了，他会怎么想？ 他认为：对面没有交换机了，或者链路断了. 他的动作：他会把自己从blocking(堵塞)状态切换到Forwarding(转发)状态. 结果:如果实际上链路没断，只是因为光纤单向故障，cpu过载等原因导致BPDU丢了，瞬间就会产生物理环路，全网瘫痪. Loop Guard的作用：当一个本来因该接收BPDU的端口突然&quot;失联&quot;Loop Guardd不允许他进入转发状态，而是把他切入到loop-inconsistent(环路不一致)状态，直到重新接收到BPDU为止. 配置指令 Loop Guardd可以在全局模式开启（推荐）也可以在接口模式下开启。 全局模式（最省事） 他会自动应用在对点链路（FUll-Duplex）上: 1 Switch(config)#spanning-tree loopguard default 接口模式（更精确） 1 2 Switch(config)#int G0/1 Switch(config-if)spanning-tree guard loop 注意！！！ Root Guard和Loop Guard是死对头，因为他们逻辑冲突，一个接口只能同时选择一个.通常:上连口(Root Port)开Loop Guard，下连口(Designated Port)开Root Guard. "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://images.unsplash.com/photo-1613487957484-32c977a8bd62?q=80&amp;w=2069&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -230,13 +230,14 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#blocking堵塞-listening监听-learning学习-forwarding转发">Blocking(堵塞)-Listening(监听)-Learning(学习)-Forwarding(转发)</a></li>
-    <li><a href="#这个过程通常需要30秒">这个过程通常需要30秒</a></li>
-    <li><a href="#场景模拟">场景模拟:</a>
+    <li>
       <ol>
-        <li>
+        <li><a href="#在stp的逻辑里交换机靠接收bpdu来确认链路正常如果一个端口突然收不到bpdu了他会怎么想">在stp的逻辑里，交换机靠接收BPDU来确认链路正常.如果一个端口突然收不到BPDU了，他会怎么想？</a>
           <ol>
-            <li><a href="#如果你的一台pc连接到交换机pc启动很快网卡已经up了并开始dhcp请求但是交换机还在慢悠悠地进行stp计算处理监听状态结果就是dhcp超时网络连接失败30秒后才可以上网这对用户来说是灾难">如果你的一台PC连接到交换机，pc启动很快网卡已经UP了并开始DHCP请求，但是交换机还在慢悠悠地进行STP计算（处理监听状态）结果就是DHCP超时，网络连接失败30秒后才可以上网这对用户来说是灾难！</a></li>
+            <li><a href="#他认为对面没有交换机了或者链路断了">他认为：对面没有交换机了，或者链路断了.</a></li>
+            <li><a href="#他的动作他会把自己从blocking堵塞状态切换到forwarding转发状态">他的动作：他会把自己从blocking(堵塞)状态切换到Forwarding(转发)状态.</a></li>
+            <li><a href="#结果如果实际上链路没断只是因为光纤单向故障cpu过载等原因导致bpdu丢了瞬间就会产生物理环路全网瘫痪">结果:如果实际上链路没断，只是因为光纤单向故障，cpu过载等原因导致BPDU丢了，瞬间就会产生物理环路，全网瘫痪.</a></li>
+            <li><a href="#loop-guard的作用当一个本来因该接收bpdu的端口突然失联loop-guardd不允许他进入转发状态而是把他切入到loop-inconsistent环路不一致状态直到重新接收到bpdu为止">Loop Guard的作用：当一个本来因该接收BPDU的端口突然&quot;失联&quot;Loop Guardd不允许他进入转发状态，而是把他切入到loop-inconsistent(环路不一致)状态，直到重新接收到BPDU为止.</a></li>
           </ol>
         </li>
       </ol>
@@ -246,31 +247,12 @@
   <ol>
     <li>
       <ol>
-        <li>
+        <li><a href="#loop-guardd可以在全局模式开启推荐也可以在接口模式下开启">Loop Guardd可以在全局模式开启（推荐）也可以在接口模式下开启。</a>
           <ol>
-            <li><a href="#当你对一个接口使用prtfast后接口会跳过listening监听-learning学习阶段直接进入forwarding转发状态">当你对一个接口使用Prtfast后接口会跳过Listening(监听)-Learning(学习)阶段+直接进入Forwarding(转发)状态</a></li>
+            <li><a href="#全局模式最省事">全局模式（最省事）</a></li>
           </ol>
         </li>
-        <li><a href="#1瞬间up端口几乎在物理链路连通之间的同时就能转发数据包">1.瞬间UP:端口几乎在物理链路连通之间的同时就能转发数据包。</a></li>
-        <li><a href="#2适用对象只能适用终端设备pc服务器打印机的接口">2.适用对象:只能适用终端设备（pc，服务器，打印机）的接口</a></li>
-        <li><a href="#3禁止对象交换机集线器或者网桥">3.禁止对象:交换机，集线器或者网桥</a>
-          <ol>
-            <li><a href="#如果你在二个交换机互联的链路上开启prtfast极大概率引起广播风暴">如果你在二个交换机互联的链路上开启Prtfast，极大概率引起广播风暴!!!</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-  </ol>
-
-  <ol>
-    <li><a href="#方式a接口配置针对特定接口">方式A：接口配置（针对特定接口）</a>
-      <ol>
-        <li><a href="#如下在交换机下">如下（在交换机下）</a></li>
-      </ol>
-    </li>
-    <li><a href="#方式b全局配置针对所有access端口">方式B：全局配置（针对所有Access端口）</a>
-      <ol>
-        <li><a href="#如下在交换机下-1">如下（在交换机下）</a></li>
+        <li><a href="#接口模式更精确">接口模式（更精确）</a></li>
       </ol>
     </li>
   </ol>
@@ -278,28 +260,9 @@
   <ol>
     <li>
       <ol>
-        <li>
-          <ol>
-            <li><a href="#开启了portfast-之后如果有人不小心接上了一个交换机会导致广播风暴我们要配合bpdu-guard使用">开启了portfast 之后如果有人不小心接上了一个交换机会导致广播风暴，我们要配合BPDU Guard使用：</a></li>
-          </ol>
-        </li>
+        <li><a href="#root-guard和loop-guard是死对头因为他们逻辑冲突一个接口只能同时选择一个通常上连口root-port开loop-guard下连口designated-port开root-guard">Root Guard和Loop Guard是死对头，因为他们逻辑冲突，一个接口只能同时选择一个.通常:上连口(Root Port)开Loop Guard，下连口(Designated Port)开Root Guard.</a></li>
       </ol>
     </li>
-    <li><a href="#如下在交换机下-2">如下（在交换机下）</a>
-      <ol>
-        <li>
-          <ol>
-            <li><a href="#开启这个以后portfast-端口收到bpdu包他会立即进入err-disable状态直接把物理链路掐断">开启这个以后portfast 端口收到BPDU包他会立即进入err-disable状态，直接把物理链路掐断。</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-  </ol>
-
-  <ol>
-    <li><a href="#优点解决dhcp超时问题提升用户体验">优点:解决DHCP超时问题，提升用户体验！</a></li>
-    <li><a href="#风险配置不当会导致物理环路">风险:配置不当会导致物理环路!</a></li>
-    <li><a href="#黄金法则终端开启互联禁止必须配合bpdu-guard">黄金法则：终端开启，互联禁止，必须配合BPDU Guard！</a></li>
   </ol>
 </nav>
         </div>
@@ -314,9 +277,9 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/ccna-%E7%90%86%E8%AE%BAstp-prtfast%E5%B7%A5%E5%85%B7/">
+            <a href="/p/ccna-%E7%90%86%E8%AE%BAloop-guard%E5%B7%A5%E5%85%B7/">
                 
-                    <img src="https://images.unsplash.com/photo-1599173704879-2e407aa34cde?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" alt="Featured image of post CCNA 理论：STP-Prtfast工具" />
+                    <img src="https://images.unsplash.com/photo-1613487957484-32c977a8bd62?q=80&amp;w=2069&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" alt="Featured image of post CCNA 理论：Loop Guard工具" />
                 
             </a>
         </div>
@@ -335,7 +298,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/ccna-%E7%90%86%E8%AE%BAstp-prtfast%E5%B7%A5%E5%85%B7/">CCNA 理论：STP-Prtfast工具</a>
+            <a href="/p/ccna-%E7%90%86%E8%AE%BAloop-guard%E5%B7%A5%E5%85%B7/">CCNA 理论：Loop Guard工具</a>
         </h2>
     
         
@@ -357,7 +320,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published" datetime='2026-01-26T20:59:51&#43;08:00'>Jan 26, 2026</time>
+                <time class="article-time--published" datetime='2026-01-30T20:30:12&#43;08:00'>Jan 30, 2026</time>
             </div>
         
 
@@ -372,7 +335,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 1 分钟
                 </time>
             </div>
         
@@ -387,58 +350,38 @@
     <section class="article-content">
     
     
-    <h1 id="1为什么要用prtfast解决收敛延迟">1.为什么要用Prtfast？（解决收敛延迟）
-</h1><h1 id="在标准的生成树协议stp中从一个端口接入网要经历以下流程">在标准的生成树协议(STP)中从一个端口接入网要经历以下流程:
-</h1><h2 id="blocking堵塞-listening监听-learning学习-forwarding转发">Blocking(堵塞)-Listening(监听)-Learning(学习)-Forwarding(转发)
-</h2><h2 id="这个过程通常需要30秒">这个过程通常需要30秒
-</h2><h2 id="场景模拟">场景模拟:
-</h2><h4 id="如果你的一台pc连接到交换机pc启动很快网卡已经up了并开始dhcp请求但是交换机还在慢悠悠地进行stp计算处理监听状态结果就是dhcp超时网络连接失败30秒后才可以上网这对用户来说是灾难">如果你的一台PC连接到交换机，pc启动很快网卡已经UP了并开始DHCP请求，但是交换机还在慢悠悠地进行STP计算（处理监听状态）结果就是DHCP超时，网络连接失败30秒后才可以上网这对用户来说是灾难！
-</h4><h1 id="2prtfast底层逻辑">2.Prtfast底层逻辑
-</h1><h4 id="当你对一个接口使用prtfast后接口会跳过listening监听-learning学习阶段直接进入forwarding转发状态">当你对一个接口使用Prtfast后接口会跳过Listening(监听)-Learning(学习)阶段+直接进入Forwarding(转发)状态
-</h4><h3 id="1瞬间up端口几乎在物理链路连通之间的同时就能转发数据包">1.瞬间UP:端口几乎在物理链路连通之间的同时就能转发数据包。
-</h3><h3 id="2适用对象只能适用终端设备pc服务器打印机的接口">2.适用对象:只能适用终端设备（pc，服务器，打印机）的接口
-</h3><h3 id="3禁止对象交换机集线器或者网桥">3.禁止对象:交换机，集线器或者网桥
-</h3><h4 id="如果你在二个交换机互联的链路上开启prtfast极大概率引起广播风暴">如果你在二个交换机互联的链路上开启Prtfast，极大概率引起广播风暴!!!
-</h4><h1 id="3配置指令">3.配置指令
-</h1><h2 id="方式a接口配置针对特定接口">方式A：接口配置（针对特定接口）
-</h2><h3 id="如下在交换机下">如下（在交换机下）
+    <h1 id="1为什么需要loop-guard-">1.为什么需要Loop Guard ?
+</h1><h3 id="在stp的逻辑里交换机靠接收bpdu来确认链路正常如果一个端口突然收不到bpdu了他会怎么想">在stp的逻辑里，交换机靠接收BPDU来确认链路正常.如果一个端口突然收不到BPDU了，他会怎么想？
+</h3><h4 id="他认为对面没有交换机了或者链路断了">他认为：对面没有交换机了，或者链路断了.
+</h4><h4 id="他的动作他会把自己从blocking堵塞状态切换到forwarding转发状态">他的动作：他会把自己从blocking(堵塞)状态切换到Forwarding(转发)状态.
+</h4><h4 id="结果如果实际上链路没断只是因为光纤单向故障cpu过载等原因导致bpdu丢了瞬间就会产生物理环路全网瘫痪">结果:如果实际上链路没断，只是因为光纤单向故障，cpu过载等原因导致BPDU丢了，瞬间就会产生物理环路，全网瘫痪.
+</h4><h4 id="loop-guard的作用当一个本来因该接收bpdu的端口突然失联loop-guardd不允许他进入转发状态而是把他切入到loop-inconsistent环路不一致状态直到重新接收到bpdu为止">Loop Guard的作用：当一个本来因该接收BPDU的端口突然&quot;失联&quot;Loop Guardd不允许他进入转发状态，而是把他切入到loop-inconsistent(环路不一致)状态，直到重新接收到BPDU为止.
+</h4><h1 id="配置指令">配置指令
+</h1><h3 id="loop-guardd可以在全局模式开启推荐也可以在接口模式下开启">Loop Guardd可以在全局模式开启（推荐）也可以在接口模式下开启。
+</h3><h4 id="全局模式最省事">全局模式（最省事）
+</h4><h5 id="他会自动应用在对点链路full-duplex上">他会自动应用在对点链路（FUll-Duplex）上:
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#spanning-tree loopguard default
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="接口模式更精确">接口模式（更精确）
 </h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">interface G0/1
-</span></span><span class="line"><span class="cl">spanning-tree portfast
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#int G0/1
+</span></span><span class="line"><span class="cl">Switch(config-if)spanning-tree guard loop
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="方式b全局配置针对所有access端口">方式B：全局配置（针对所有Access端口）
-</h2><h3 id="如下在交换机下-1">如下（在交换机下）
-</h3><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spanning-tree portfast default
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h1 id="4进阶补丁bpdu-guard">4.进阶补丁:BPDU Guard
-</h1><h4 id="开启了portfast-之后如果有人不小心接上了一个交换机会导致广播风暴我们要配合bpdu-guard使用">开启了portfast 之后如果有人不小心接上了一个交换机会导致广播风暴，我们要配合BPDU Guard使用：
-</h4><h2 id="如下在交换机下-2">如下（在交换机下）
-</h2><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spanning-tree bpduguard enable
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="开启这个以后portfast-端口收到bpdu包他会立即进入err-disable状态直接把物理链路掐断">开启这个以后portfast 端口收到BPDU包他会立即进入err-disable状态，直接把物理链路掐断。
-</h4><h1 id="总结">总结:
-</h1><h2 id="优点解决dhcp超时问题提升用户体验">优点:解决DHCP超时问题，提升用户体验！
-</h2><h2 id="风险配置不当会导致物理环路">风险:配置不当会导致物理环路!
-</h2><h2 id="黄金法则终端开启互联禁止必须配合bpdu-guard">黄金法则：终端开启，互联禁止，必须配合BPDU Guard！
-</h2>
+</div><h1 id="注意">注意！！！
+</h1><h3 id="root-guard和loop-guard是死对头因为他们逻辑冲突一个接口只能同时选择一个通常上连口root-port开loop-guard下连口designated-port开root-guard">Root Guard和Loop Guard是死对头，因为他们逻辑冲突，一个接口只能同时选择一个.通常:上连口(Root Port)开Loop Guard，下连口(Designated Port)开Root Guard.
+</h3>
 </section>
 
 
@@ -484,25 +427,6 @@
             
                 
 <article class="has-image">
-    <a href="/p/ccna-%E7%90%86%E8%AE%BAloop-guard%E5%B7%A5%E5%85%B7/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="https://images.unsplash.com/photo-1613487957484-32c977a8bd62?q=80&amp;w=2069&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="" data-hash="https://images.unsplash.com/photo-1613487957484-32c977a8bd62?q=80&amp;w=2069&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">CCNA 理论：Loop Guard工具</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
     <a href="/p/ccna-%E7%90%86%E8%AE%BAstp-root-guard%E5%B7%A5%E5%85%B7/">
         
         
@@ -534,6 +458,25 @@
 
         <div class="article-details">
             <h2 class="article-title">CCNA 理论：STP-BPDU工具</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/ccna-%E7%90%86%E8%AE%BAstp-prtfast%E5%B7%A5%E5%85%B7/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="https://images.unsplash.com/photo-1599173704879-2e407aa34cde?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" loading="lazy" data-key="" data-hash="https://images.unsplash.com/photo-1599173704879-2e407aa34cde?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">CCNA 理论：STP-Prtfast工具</h2>
         </div>
     </a>
 </article>
