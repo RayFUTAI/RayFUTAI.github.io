@@ -10,9 +10,10 @@
 <meta property='og:description' content="实验目地：主要验证了VLAN划分-VTP同步-三层交换-STP的完整流通信过程 实验拓扑图 以及目标任务 具体步骤明天写&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;S ">
 <meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='交换机' /><meta property='article:tag' content='VLAN&#34;' /><meta property='article:tag' content='VTP' /><meta property='article:tag' content='STP' /><meta property='article:published_time' content='2026-01-31T22:40:53&#43;08:00'/><meta property='article:modified_time' content='2026-01-31T22:40:53&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='交换机' /><meta property='article:tag' content='VLAN&#34;' /><meta property='article:tag' content='VTP' /><meta property='article:tag' content='STP' /><meta property='article:published_time' content='2026-01-31T22:40:53&#43;08:00'/><meta property='article:modified_time' content='2026-01-31T22:40:53&#43;08:00'/><meta property='og:image' content='https://plus.unsplash.com/premium_photo-1732668021175-c192c14a01b9?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fGFraWhhYmFyYXxlbnwwfHwwfHx8MA%3D%3D' />
 <meta name="twitter:title" content="CCNA 实验：月底大整合实验">
-<meta name="twitter:description" content="实验目地：主要验证了VLAN划分-VTP同步-三层交换-STP的完整流通信过程 实验拓扑图 以及目标任务 具体步骤明天写&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;S ">
+<meta name="twitter:description" content="实验目地：主要验证了VLAN划分-VTP同步-三层交换-STP的完整流通信过程 实验拓扑图 以及目标任务 具体步骤明天写&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;S "><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://plus.unsplash.com/premium_photo-1732668021175-c192c14a01b9?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fGFraWhhYmFyYXxlbnwwfHwwfHx8MA%3D%3D' />
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -245,8 +246,16 @@
 
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/">
+                
+                    <img src="https://plus.unsplash.com/premium_photo-1732668021175-c192c14a01b9?w=600&amp;auto=format&amp;fit=crop&amp;q=60&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8Njl8fGFraWhhYmFyYXxlbnwwfHwwfHx8MA%3D%3D" loading="lazy" alt="Featured image of post CCNA 实验：月底大整合实验" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
