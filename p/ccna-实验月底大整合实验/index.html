@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验目地：主要验证了VLAN划分-VTP同步-三层交换-STP的完整流通信过程 实验拓扑图 以及目标任务 具体步骤明天写&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;S ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="实验目地：主要验证了VLAN划分-VTP同步-三层交换-STP的完整流通信过程 实验拓扑图 以及目标任务 使用设备：2台PC | 1台三层交换机 使用线路：2个直通线 VLAN10网段：192.168.1.0/24 VLAN20网段：192.168.2.0/24 步骤一：命名三层交换机 分别为：SW1和SW2 命令如下: 1 2 Switch(config)#hostname SW1 Switch(config)#hostname SW2 步骤二：加密交换机（dm5） SW1和SW2为相同密码:CCNA 命令如下: 1 Switch(config)#enable scaret CCNA 步骤三：创建域名以及运用VTP功能 在SW1下创建域名并将SW1创建为服务器,SW2为客户端并在端口上开启Trunk. 命令如下: 1 2 3 4 5 6 7 Switch(config)#vtp domain CCNA #创建域名 Switch(config)#vtp mode verver #创建为服务器 Switch(config)#vtp version 2 #版本设置为2 Switch(config)#vtp mode client #创建为客户端模式 -SW2 Switch(config)#int G0/1 Switch(config-if)#switchport trunk encapsulation dot1q #统一协议为dot1q Switch(config-if)#switchport mode trunk #开启trunk链路 ">
 <title>CCNA 实验：月底大整合实验</title>
 
 <link rel='canonical' href='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/'>
 
 <link rel="stylesheet" href="/scss/style.min.833d6eed45de56f48306bf57268d5b8cdfc8a60e8e7bdc99810464fcd033f7c6.css"><meta property='og:title' content="CCNA 实验：月底大整合实验">
-<meta property='og:description' content="实验目地：主要验证了VLAN划分-VTP同步-三层交换-STP的完整流通信过程 实验拓扑图 以及目标任务 具体步骤明天写&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;S ">
+<meta property='og:description' content="实验目地：主要验证了VLAN划分-VTP同步-三层交换-STP的完整流通信过程 实验拓扑图 以及目标任务 使用设备：2台PC | 1台三层交换机 使用线路：2个直通线 VLAN10网段：192.168.1.0/24 VLAN20网段：192.168.2.0/24 步骤一：命名三层交换机 分别为：SW1和SW2 命令如下: 1 2 Switch(config)#hostname SW1 Switch(config)#hostname SW2 步骤二：加密交换机（dm5） SW1和SW2为相同密码:CCNA 命令如下: 1 Switch(config)#enable scaret CCNA 步骤三：创建域名以及运用VTP功能 在SW1下创建域名并将SW1创建为服务器,SW2为客户端并在端口上开启Trunk. 命令如下: 1 2 3 4 5 6 7 Switch(config)#vtp domain CCNA #创建域名 Switch(config)#vtp mode verver #创建为服务器 Switch(config)#vtp version 2 #版本设置为2 Switch(config)#vtp mode client #创建为客户端模式 -SW2 Switch(config)#int G0/1 Switch(config-if)#switchport trunk encapsulation dot1q #统一协议为dot1q Switch(config-if)#switchport mode trunk #开启trunk链路 ">
 <meta property='og:url' content='https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/'>
 <meta property='og:site_name' content='伏太中文技术博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='CCNA' /><meta property='article:tag' content='交换机' /><meta property='article:tag' content='VLAN&#34;' /><meta property='article:tag' content='VTP' /><meta property='article:tag' content='STP' /><meta property='article:published_time' content='2026-01-31T22:40:53&#43;08:00'/><meta property='article:modified_time' content='2026-01-31T22:40:53&#43;08:00'/><meta property='og:image' content='https://images.unsplash.com/photo-1656857221015-ddc2163a08da?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
 <meta name="twitter:title" content="CCNA 实验：月底大整合实验">
-<meta name="twitter:description" content="实验目地：主要验证了VLAN划分-VTP同步-三层交换-STP的完整流通信过程 实验拓扑图 以及目标任务 具体步骤明天写&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;S "><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="实验目地：主要验证了VLAN划分-VTP同步-三层交换-STP的完整流通信过程 实验拓扑图 以及目标任务 使用设备：2台PC | 1台三层交换机 使用线路：2个直通线 VLAN10网段：192.168.1.0/24 VLAN20网段：192.168.2.0/24 步骤一：命名三层交换机 分别为：SW1和SW2 命令如下: 1 2 Switch(config)#hostname SW1 Switch(config)#hostname SW2 步骤二：加密交换机（dm5） SW1和SW2为相同密码:CCNA 命令如下: 1 Switch(config)#enable scaret CCNA 步骤三：创建域名以及运用VTP功能 在SW1下创建域名并将SW1创建为服务器,SW2为客户端并在端口上开启Trunk. 命令如下: 1 2 3 4 5 6 7 Switch(config)#vtp domain CCNA #创建域名 Switch(config)#vtp mode verver #创建为服务器 Switch(config)#vtp version 2 #版本设置为2 Switch(config)#vtp mode client #创建为客户端模式 -SW2 Switch(config)#int G0/1 Switch(config-if)#switchport trunk encapsulation dot1q #统一协议为dot1q Switch(config-if)#switchport mode trunk #开启trunk链路 "><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://images.unsplash.com/photo-1656857221015-ddc2163a08da?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
     <link rel="shortcut icon" href="/favicon.png" />
 
@@ -232,9 +232,84 @@
   <ol>
     <li><a href="#实验拓扑图">实验拓扑图</a>
       <ol>
-        <li><a href="#以及目标任务">以及目标任务</a></li>
+        <li><a href="#以及目标任务">以及目标任务</a>
+          <ol>
+            <li><a href="#使用设备2台pc--1台三层交换机">使用设备：2台PC | 1台三层交换机</a></li>
+            <li><a href="#使用线路2个直通线">使用线路：2个直通线</a></li>
+            <li><a href="#vlan10网段1921681024">VLAN10网段：192.168.1.0/24</a></li>
+            <li><a href="#vlan20网段1921682024">VLAN20网段：192.168.2.0/24</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
+    <li><a href="#步骤一命名三层交换机">步骤一：命名三层交换机</a>
+      <ol>
+        <li><a href="#分别为sw1和sw2">分别为：SW1和SW2</a>
+          <ol>
+            <li><a href="#命令如下">命令如下:</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#步骤二加密交换机dm5">步骤二：加密交换机（dm5）</a>
+      <ol>
+        <li><a href="#sw1和sw2为相同密码ccna">SW1和SW2为相同密码:CCNA</a>
+          <ol>
+            <li><a href="#命令如下-1">命令如下:</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#步骤三创建域名以及运用vtp功能">步骤三：创建域名以及运用VTP功能</a>
+      <ol>
+        <li><a href="#在sw1下创建域名并将sw1创建为服务器sw2为客户端并在端口上开启trunk">在SW1下创建域名并将SW1创建为服务器,SW2为客户端并在端口上开启Trunk.</a>
+          <ol>
+            <li><a href="#命令如下-2">命令如下:</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#步骤四创建vlan并命名">步骤四：创建VLAN并命名</a>
+      <ol>
+        <li><a href="#vlan10-命名为tencher-vlan20-命名为stduent">vlan10 命名为tencher vlan20 命名为stduent</a>
+          <ol>
+            <li><a href="#命令如下-3">命令如下:</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#步骤五划分vlan对应的主机">步骤五：划分VLAN对应的主机</a>
+      <ol>
+        <li><a href="#vlan10-为黄色区域-vlan20-为蓝色区域">vlan10 为黄色区域 vlan20 为蓝色区域</a>
+          <ol>
+            <li><a href="#命令如下-4">命令如下:</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#步骤六给vlan配置ip并开启路由模式">步骤六：给vlan配置ip并开启路由模式</a>
+      <ol>
+        <li><a href="#在sw1下配置">在SW1下配置</a>
+          <ol>
+            <li><a href="#命令如下-5">命令如下:</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#步骤七在全局模式下开启stpprtfast工具并配合bpdu工具">步骤七：在全局模式下开启stp:prtfast工具并配合BPDU工具</a>
+      <ol>
+        <li><a href="#在sw1和sw2下配置并保存配置">在SW1和SW2下配置并保存配置</a></li>
+      </ol>
+    </li>
+    <li><a href="#步骤八测试网络连通性">步骤八：测试网络连通性</a>
+      <ol>
+        <li><a href="#ping不同网段">ping不同网段</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li><a href="#查看命令">查看命令:</a></li>
   </ol>
 </nav>
         </div>
@@ -307,7 +382,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -339,8 +414,283 @@
 		data-flex-basis="451px"
 	
 ></p>
-<h1 id="具体步骤明天写s">具体步骤明天写&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;S
-</h1>
+<h4 id="使用设备2台pc--1台三层交换机">使用设备：2台PC | 1台三层交换机
+</h4><h4 id="使用线路2个直通线">使用线路：2个直通线
+</h4><h4 id="vlan10网段1921681024">VLAN10网段：192.168.1.0/24
+</h4><h4 id="vlan20网段1921682024">VLAN20网段：192.168.2.0/24
+</h4><h2 id="步骤一命名三层交换机">步骤一：命名三层交换机
+</h2><h3 id="分别为sw1和sw2">分别为：SW1和SW2
+</h3><h4 id="命令如下">命令如下:
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#hostname SW1
+</span></span><span class="line"><span class="cl">Switch(config)#hostname SW2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/2.jpg"
+	width="2876"
+	height="1519"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/2_hu_7c28ef502a33a8d9.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/2_hu_f8bcfd3b409ec236.jpg 1024w"
+	loading="lazy"
+	
+		alt="命令"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="454px"
+	
+></p>
+<h2 id="步骤二加密交换机dm5">步骤二：加密交换机（dm5）
+</h2><h3 id="sw1和sw2为相同密码ccna">SW1和SW2为相同密码:CCNA
+</h3><h4 id="命令如下-1">命令如下:
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#enable scaret CCNA
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/3.jpg"
+	width="2879"
+	height="1522"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/3_hu_e8ffc62eb66cee97.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/3_hu_91baa4b09c92cca4.jpg 1024w"
+	loading="lazy"
+	
+		alt="命令"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="453px"
+	
+></p>
+<h2 id="步骤三创建域名以及运用vtp功能">步骤三：创建域名以及运用VTP功能
+</h2><h3 id="在sw1下创建域名并将sw1创建为服务器sw2为客户端并在端口上开启trunk">在SW1下创建域名并将SW1创建为服务器,SW2为客户端并在端口上开启Trunk.
+</h3><h4 id="命令如下-2">命令如下:
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#vtp domain CCNA #创建域名
+</span></span><span class="line"><span class="cl">Switch(config)#vtp mode verver #创建为服务器
+</span></span><span class="line"><span class="cl">Switch(config)#vtp version 2 #版本设置为2
+</span></span><span class="line"><span class="cl">Switch(config)#vtp mode client #创建为客户端模式 -SW2
+</span></span><span class="line"><span class="cl">Switch(config)#int G0/1
+</span></span><span class="line"><span class="cl">Switch(config-if)#switchport trunk encapsulation dot1q #统一协议为dot1q
+</span></span><span class="line"><span class="cl">Switch(config-if)#switchport mode trunk #开启trunk链路
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/4.jpg"
+	width="2879"
+	height="1524"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/4_hu_e410e15ba2d62ef.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/4_hu_149142d416a60a14.jpg 1024w"
+	loading="lazy"
+	
+		alt="命令"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="188"
+		data-flex-basis="453px"
+	
+></p>
+<h2 id="步骤四创建vlan并命名">步骤四：创建VLAN并命名
+</h2><h3 id="vlan10-命名为tencher-vlan20-命名为stduent">vlan10 命名为tencher vlan20 命名为stduent
+</h3><h4 id="命令如下-3">命令如下:
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#vlan 10 #创建vlan
+</span></span><span class="line"><span class="cl">Switch(config-vlan)#name tencher #命名
+</span></span><span class="line"><span class="cl">Switch(config)#vlan 20 #创建vlan
+</span></span><span class="line"><span class="cl">Switch(config-vlan)#name stduent #命名
+</span></span><span class="line"><span class="cl">do show vlan brief #查看vlan表
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/5.jpg"
+	width="2879"
+	height="1521"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/5_hu_9a3d237b177b1861.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/5_hu_dcb6591da60990b6.jpg 1024w"
+	loading="lazy"
+	
+		alt="命令"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="454px"
+	
+></p>
+<h2 id="步骤五划分vlan对应的主机">步骤五：划分VLAN对应的主机
+</h2><h3 id="vlan10-为黄色区域-vlan20-为蓝色区域">vlan10 为黄色区域 vlan20 为蓝色区域
+</h3><h4 id="命令如下-4">命令如下:
+</h4><h5 id="sw1下">SW1下:
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#int F0/1
+</span></span><span class="line"><span class="cl">Switch(config-if)#switchport mode access
+</span></span><span class="line"><span class="cl">Switch(config-if)#switchport access vlan10
+</span></span><span class="line"><span class="cl">Switch(config)#int range F0/2-3
+</span></span><span class="line"><span class="cl">Switch(config-if-range)#switchport mode access
+</span></span><span class="line"><span class="cl">Switch(config-if-range)#switchport access vlan20
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="sw2下">SW2下:
+</h5><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#int range F0/1-2
+</span></span><span class="line"><span class="cl">Switch(config-if-range)#switchport mode access
+</span></span><span class="line"><span class="cl">Switch(config-if-range)#switchport access vlan10
+</span></span><span class="line"><span class="cl">Switch(config)#int F0/3
+</span></span><span class="line"><span class="cl">Switch(config-if)#switchport mode access
+</span></span><span class="line"><span class="cl">Switch(config-if)#switchport access vlan20
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/6.jpg"
+	width="2879"
+	height="1524"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/6_hu_25cbfa2f8a701478.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/6_hu_184e82f3da19712f.jpg 1024w"
+	loading="lazy"
+	
+		alt="命令"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="188"
+		data-flex-basis="453px"
+	
+></p>
+<h2 id="步骤六给vlan配置ip并开启路由模式">步骤六：给vlan配置ip并开启路由模式
+</h2><h3 id="在sw1下配置">在SW1下配置
+</h3><h4 id="命令如下-5">命令如下:
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#int vlan 10
+</span></span><span class="line"><span class="cl">Switch(config-if)#ip address 192.168.1.254 255.255.255.0 
+</span></span><span class="line"><span class="cl">Switch(config-if)#no shutdown
+</span></span><span class="line"><span class="cl">Switch(config)#int vlan 20
+</span></span><span class="line"><span class="cl">Switch(config-if)#ip address 192.168.2.254 255.255.255.0 
+</span></span><span class="line"><span class="cl">Switch(config-if)#no shutdown
+</span></span><span class="line"><span class="cl">Switch(config-if)#exit 
+</span></span><span class="line"><span class="cl">Switch(config)#ip routing #开启路由模式
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/7.jpg"
+	width="2879"
+	height="1511"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/7_hu_3218ed1910f82bbc.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/7_hu_f0151c94115d37b0.jpg 1024w"
+	loading="lazy"
+	
+		alt="命令"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="457px"
+	
+></p>
+<h2 id="步骤七在全局模式下开启stpprtfast工具并配合bpdu工具">步骤七：在全局模式下开启stp:prtfast工具并配合BPDU工具
+</h2><h3 id="在sw1和sw2下配置并保存配置">在SW1和SW2下配置并保存配置
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch(config)#spanning-tree portfast default #开启prtfast
+</span></span><span class="line"><span class="cl">Switch(config)#spanning-tree portfast bpduguard default  #开启BPDU
+</span></span><span class="line"><span class="cl">Switch(config)#do w #保存配置
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/8.jpg"
+	width="2879"
+	height="1522"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/8_hu_9de5ba4ca6ec66ce.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/8_hu_cc39efae9b435a98.jpg 1024w"
+	loading="lazy"
+	
+		alt="命令"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="453px"
+	
+></p>
+<h2 id="步骤八测试网络连通性">步骤八：测试网络连通性
+</h2><h3 id="ping不同网段">ping不同网段
+</h3><p><img src="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/9.jpg"
+	width="2879"
+	height="1518"
+	srcset="/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/9_hu_756366be285509c7.jpg 480w, /p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/9_hu_2c7e8be091f1a53b.jpg 1024w"
+	loading="lazy"
+	
+		alt="ping"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="189"
+		data-flex-basis="455px"
+	
+></p>
+<h1 id="实验结束">实验结束
+</h1><h2 id="查看命令">查看命令:
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Switch#show vlan brief
+</span></span><span class="line"><span class="cl">Switch#show ip int br 
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 

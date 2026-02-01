@@ -253,8 +253,283 @@
 		data-flex-basis=&#34;451px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h1 id=&#34;具体步骤明天写s&#34;&gt;具体步骤明天写&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;S
-&lt;/h1&gt;</description>
+&lt;h4 id=&#34;使用设备2台pc--1台三层交换机&#34;&gt;使用设备：2台PC | 1台三层交换机
+&lt;/h4&gt;&lt;h4 id=&#34;使用线路2个直通线&#34;&gt;使用线路：2个直通线
+&lt;/h4&gt;&lt;h4 id=&#34;vlan10网段1921681024&#34;&gt;VLAN10网段：192.168.1.0/24
+&lt;/h4&gt;&lt;h4 id=&#34;vlan20网段1921682024&#34;&gt;VLAN20网段：192.168.2.0/24
+&lt;/h4&gt;&lt;h2 id=&#34;步骤一命名三层交换机&#34;&gt;步骤一：命名三层交换机
+&lt;/h2&gt;&lt;h3 id=&#34;分别为sw1和sw2&#34;&gt;分别为：SW1和SW2
+&lt;/h3&gt;&lt;h4 id=&#34;命令如下&#34;&gt;命令如下:
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#hostname SW1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#hostname SW2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/2.jpg&#34;
+	width=&#34;2876&#34;
+	height=&#34;1519&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/2_hu_7c28ef502a33a8d9.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/2_hu_f8bcfd3b409ec236.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;命令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;454px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;步骤二加密交换机dm5&#34;&gt;步骤二：加密交换机（dm5）
+&lt;/h2&gt;&lt;h3 id=&#34;sw1和sw2为相同密码ccna&#34;&gt;SW1和SW2为相同密码:CCNA
+&lt;/h3&gt;&lt;h4 id=&#34;命令如下-1&#34;&gt;命令如下:
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#enable scaret CCNA
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/3.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1522&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/3_hu_e8ffc62eb66cee97.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/3_hu_91baa4b09c92cca4.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;命令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;步骤三创建域名以及运用vtp功能&#34;&gt;步骤三：创建域名以及运用VTP功能
+&lt;/h2&gt;&lt;h3 id=&#34;在sw1下创建域名并将sw1创建为服务器sw2为客户端并在端口上开启trunk&#34;&gt;在SW1下创建域名并将SW1创建为服务器,SW2为客户端并在端口上开启Trunk.
+&lt;/h3&gt;&lt;h4 id=&#34;命令如下-2&#34;&gt;命令如下:
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#vtp domain CCNA #创建域名
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#vtp mode verver #创建为服务器
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#vtp version 2 #版本设置为2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#vtp mode client #创建为客户端模式 -SW2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#int G0/1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#switchport trunk encapsulation dot1q #统一协议为dot1q
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#switchport mode trunk #开启trunk链路
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/4.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1524&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/4_hu_e410e15ba2d62ef.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/4_hu_149142d416a60a14.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;命令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;步骤四创建vlan并命名&#34;&gt;步骤四：创建VLAN并命名
+&lt;/h2&gt;&lt;h3 id=&#34;vlan10-命名为tencher-vlan20-命名为stduent&#34;&gt;vlan10 命名为tencher vlan20 命名为stduent
+&lt;/h3&gt;&lt;h4 id=&#34;命令如下-3&#34;&gt;命令如下:
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#vlan 10 #创建vlan
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-vlan)#name tencher #命名
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#vlan 20 #创建vlan
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-vlan)#name stduent #命名
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;do show vlan brief #查看vlan表
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/5.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1521&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/5_hu_9a3d237b177b1861.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/5_hu_dcb6591da60990b6.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;命令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;454px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;步骤五划分vlan对应的主机&#34;&gt;步骤五：划分VLAN对应的主机
+&lt;/h2&gt;&lt;h3 id=&#34;vlan10-为黄色区域-vlan20-为蓝色区域&#34;&gt;vlan10 为黄色区域 vlan20 为蓝色区域
+&lt;/h3&gt;&lt;h4 id=&#34;命令如下-4&#34;&gt;命令如下:
+&lt;/h4&gt;&lt;h5 id=&#34;sw1下&#34;&gt;SW1下:
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#int F0/1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#switchport mode access
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#switchport access vlan10
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#int range F0/2-3
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if-range)#switchport mode access
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if-range)#switchport access vlan20
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h5 id=&#34;sw2下&#34;&gt;SW2下:
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#int range F0/1-2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if-range)#switchport mode access
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if-range)#switchport access vlan10
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#int F0/3
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#switchport mode access
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#switchport access vlan20
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/6.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1524&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/6_hu_25cbfa2f8a701478.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/6_hu_184e82f3da19712f.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;命令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;188&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;步骤六给vlan配置ip并开启路由模式&#34;&gt;步骤六：给vlan配置ip并开启路由模式
+&lt;/h2&gt;&lt;h3 id=&#34;在sw1下配置&#34;&gt;在SW1下配置
+&lt;/h3&gt;&lt;h4 id=&#34;命令如下-5&#34;&gt;命令如下:
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#int vlan 10
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#ip address 192.168.1.254 255.255.255.0 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#no shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#int vlan 20
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#ip address 192.168.2.254 255.255.255.0 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#no shutdown
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config-if)#exit 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#ip routing #开启路由模式
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/7.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1511&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/7_hu_3218ed1910f82bbc.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/7_hu_f0151c94115d37b0.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;命令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;190&#34;
+		data-flex-basis=&#34;457px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;步骤七在全局模式下开启stpprtfast工具并配合bpdu工具&#34;&gt;步骤七：在全局模式下开启stp:prtfast工具并配合BPDU工具
+&lt;/h2&gt;&lt;h3 id=&#34;在sw1和sw2下配置并保存配置&#34;&gt;在SW1和SW2下配置并保存配置
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#spanning-tree portfast default #开启prtfast
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#spanning-tree portfast bpduguard default  #开启BPDU
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch(config)#do w #保存配置
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/8.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1522&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/8_hu_9de5ba4ca6ec66ce.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/8_hu_cc39efae9b435a98.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;命令&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;453px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;步骤八测试网络连通性&#34;&gt;步骤八：测试网络连通性
+&lt;/h2&gt;&lt;h3 id=&#34;ping不同网段&#34;&gt;ping不同网段
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/9.jpg&#34;
+	width=&#34;2879&#34;
+	height=&#34;1518&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/9_hu_756366be285509c7.jpg 480w, https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/9_hu_2c7e8be091f1a53b.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ping&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;189&#34;
+		data-flex-basis=&#34;455px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;实验结束&#34;&gt;实验结束
+&lt;/h1&gt;&lt;h2 id=&#34;查看命令&#34;&gt;查看命令:
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch#show vlan brief
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Switch#show ip int br 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
         </item>
         <item>
         <title>CCNA 理论：Loop Guard工具</title>
