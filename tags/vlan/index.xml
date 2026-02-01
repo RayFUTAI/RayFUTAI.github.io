@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>VLAN&#34; on 伏太中文技术博客</title>
+        <title>VLAN on 伏太中文技术博客</title>
         <link>https://RayFUTAI.github.ioc/tags/vlan/</link>
-        <description>Recent content in VLAN&#34; on 伏太中文技术博客</description>
+        <description>Recent content in VLAN on 伏太中文技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <lastBuildDate>Sat, 31 Jan 2026 22:40:53 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/tags/vlan/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -29,8 +29,8 @@
 		data-flex-basis=&#34;451px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h4 id=&#34;使用设备2台pc--1台三层交换机&#34;&gt;使用设备：2台PC | 1台三层交换机
-&lt;/h4&gt;&lt;h4 id=&#34;使用线路2个直通线&#34;&gt;使用线路：2个直通线
+&lt;h4 id=&#34;使用设备6台pc--2台三层交换机&#34;&gt;使用设备：6台PC | 2台三层交换机
+&lt;/h4&gt;&lt;h4 id=&#34;使用线路6个直通线--1个双绞线&#34;&gt;使用线路：6个直通线 | 1个双绞线
 &lt;/h4&gt;&lt;h4 id=&#34;vlan10网段1921681024&#34;&gt;VLAN10网段：192.168.1.0/24
 &lt;/h4&gt;&lt;h4 id=&#34;vlan20网段1921682024&#34;&gt;VLAN20网段：192.168.2.0/24
 &lt;/h4&gt;&lt;h2 id=&#34;步骤一命名三层交换机&#34;&gt;步骤一：命名三层交换机
