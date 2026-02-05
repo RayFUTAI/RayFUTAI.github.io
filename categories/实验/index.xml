@@ -6,7 +6,147 @@
         <description>Recent content in 实验 on 伏太中文技术博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 31 Jan 2026 22:40:53 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/categories/%E5%AE%9E%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 05 Feb 2026 17:47:07 +0800</lastBuildDate><atom:link href="https://RayFUTAI.github.ioc/categories/%E5%AE%9E%E9%AA%8C/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>如何搭建小型实验室</title>
+        <link>https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/</link>
+        <pubDate>Thu, 05 Feb 2026 17:47:07 +0800</pubDate>
+        
+        <guid>https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/</guid>
+        <description>&lt;img src="https://images.unsplash.com/photo-1525230071276-4a87f42f469e?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Featured image of post 如何搭建小型实验室" /&gt;&lt;h2 id=&#34;前言&#34;&gt;前言:
+&lt;/h2&gt;&lt;h3 id=&#34;今天不写理论和实验今天写一篇怎么搭建家庭小型实验室介绍我购买的设备和使用的软件以及必须的购买的线的类型&#34;&gt;今天不写理论和实验，今天写一篇怎么搭建家庭小型实验室介绍我购买的设备和使用的软件以及必须的购买的线的类型.
+&lt;/h3&gt;&lt;h2 id=&#34;一设备以及必须品&#34;&gt;一.设备以及必须品
+&lt;/h2&gt;&lt;h3 id=&#34;设备我购买了两台设备分别是3560-24和3750x-e-48两台均为三层交换机有路由功能3750x-e目前作为我的核心机器我的购买渠道是闲鱼两台价格分别为100设备总成本为200元&#34;&gt;设备：我购买了两台设备分别是3560-24和3750X-E-48：两台均为三层交换机（有路由功能）3750X-E目前作为我的核心机器,我的购买渠道是&amp;quot;闲鱼&amp;quot;两台价格分别为100设备总成本为：『200元』.
+&lt;/h3&gt;&lt;h3 id=&#34;必须品console调试线usb转rj45串口控制线用于调试交换机25元-网卡转接器usb接口转rj45用于连接主机-12元2个--网线六类网线用于交换机-交换机--交换机-主机-3元1条-两条电源线交换机电源线0元卖家送的&#34;&gt;必须品：CONSOLE调试线（USB转rj45串口控制线）用于调试交换机『25元』| 网卡转接器（usb接口转RJ45）用于连接主机 『12元2个』 | 网线（六类网线）用于交换机-交换机 | 交换机-主机 『3元1条』| 两条电源线（交换机电源线）『0元』（卖家送的）.
+&lt;/h3&gt;&lt;h2 id=&#34;图片参考&#34;&gt;图片参考:
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/1.jpg&#34;
+	width=&#34;1024&#34;
+	height=&#34;1024&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/1_hu_308e34e698c642d5.jpg 480w, https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/1_hu_a065ce0edabf7bc3.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;3750X示意图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/2.jpg&#34;
+	width=&#34;1024&#34;
+	height=&#34;1024&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/2_hu_3be5c4289ea707e.jpg 480w, https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/2_hu_f9afeb936c8502c7.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;3560示意图&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;100&#34;
+		data-flex-basis=&#34;240px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/3.jpg&#34;
+	width=&#34;2843&#34;
+	height=&#34;1280&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/3_hu_a3a89a07290f4161.jpg 480w, https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/3_hu_ca5d79e7708a4188.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;调试线接口&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;533px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/4.jpg&#34;
+	width=&#34;2843&#34;
+	height=&#34;1280&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/4_hu_c44e946bd8e19ed1.jpg 480w, https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/4_hu_bd09b0405743983e.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;网线接口&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;533px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/5.jpg&#34;
+	width=&#34;2843&#34;
+	height=&#34;1280&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/5_hu_f56a27a8849c8085.jpg 480w, https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/5_hu_3fb09cf8b5c0284e.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;电源线接口&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;533px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/6.jpg&#34;
+	width=&#34;1280&#34;
+	height=&#34;2843&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/6_hu_784f65b90e0deba6.jpg 480w, https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/6_hu_dc3c528e48e104d5.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;网卡转接器&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;45&#34;
+		data-flex-basis=&#34;108px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/7.jpg&#34;
+	width=&#34;1024&#34;
+	height=&#34;2276&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/7_hu_adfb75d6b66c4462.jpg 480w, https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/7_hu_64831c5614845390.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;网线&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;44&#34;
+		data-flex-basis=&#34;107px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/8.jpg&#34;
+	width=&#34;1280&#34;
+	height=&#34;2843&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/8_hu_e153e76b0d583269.jpg 480w, https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/8_hu_f22d972831504a6b.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;电源线&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;45&#34;
+		data-flex-basis=&#34;108px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/9.jpg&#34;
+	width=&#34;2843&#34;
+	height=&#34;1280&#34;
+	srcset=&#34;https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/9_hu_faade3d9f999ec8c.jpg 480w, https://RayFUTAI.github.ioc/p/%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%B0%8F%E5%9E%8B%E5%AE%9E%E9%AA%8C%E5%AE%A4/9_hu_6be9dc5473b9c631.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;调试线&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;533px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>CCNA 实验：月底大整合实验</title>
         <link>https://RayFUTAI.github.ioc/p/ccna-%E5%AE%9E%E9%AA%8C%E6%9C%88%E5%BA%95%E5%A4%A7%E6%95%B4%E5%90%88%E5%AE%9E%E9%AA%8C/</link>
         <pubDate>Sat, 31 Jan 2026 22:40:53 +0800</pubDate>
